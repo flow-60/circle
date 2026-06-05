@@ -1,40 +1,112 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>外壁塗装工事の流れ｜株式会社ｃｉｒｃｌｅ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-    /* ※共通デザインシステム（以下同様） */
-    :root { --bg-base: #faf8f5; --bg-card: #ffffff; --text-main: #2d2621; --text-sub: #5c524a; --text-muted: #a1958d; --accent: #8c6e51; --accent-light: #f5ede4; --border: #ede6df; --font-serif: "Yu Mincho", serif; --font-sans: -apple-system, sans-serif; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: var(--font-serif); background-color: var(--bg-base); color: var(--text-main); line-height: 2.0; letter-spacing: 0.08em; padding-bottom: 70px; } @media (min-width: 962px) { body { padding-bottom: 0; } } a { color: inherit; text-decoration: none; } #header { position: sticky; top: 0; z-index: 100; background: rgba(250, 248, 245, 0.93); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 20px 4%; } .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; } .logo h2 { font-size: 1.3rem; font-weight: 700; } .nav-pc { display: none; } @media (min-width: 768px) { .nav-pc { display: block; max-width: 1200px; margin: 0 auto; padding: 0 4%; } .nav-pc ul { display: flex; list-style: none; gap: 40px; padding: 16px 0 8px 0; border-bottom: 1px solid var(--border); } .nav-pc ul li a { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); } } .container { max-width: 800px; margin: 0 auto; padding: 60px 6% 100px 6%; } h1 { font-size: 1.6rem; font-weight: 500; margin-bottom: 32px; text-align: center; line-height: 1.6; } .main-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px; margin-bottom: 40px; } p { font-size: 0.95rem; color: var(--text-sub); text-align: justify; margin-bottom: 32px; } .point-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; } .point-box h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; } .btn-back { display: block; text-align: center; margin-top: 60px; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); } #footer { border-top: 1px solid var(--border); padding: 40px 6%; text-align: center; font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); } .mobile-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 64px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--border); display: flex; z-index: 999; } .mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; border-right: 1px solid var(--border); } .mobile-nav-item.highlight { background: var(--accent); color: #ffffff; } @media (min-width: 962px) { .mobile-nav { display: none; } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外壁の塗り替え目安｜株式会社ｃｉｒｃｌｅ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ⚠️ここに①トップページと全く同じCSSを貼り付けてください（省略しています） */
+
+        /* 記事ページ 特有のスタイル */
+        .page-header {
+            padding: 160px 4% 40px; text-align: center; max-width: 800px; margin: 0 auto;
+        }
+        .page-title {
+            font-size: 1.6rem; font-weight: 500; color: var(--text-main); letter-spacing: 0.15em; line-height: 1.8; margin-bottom: 40px;
+        }
+        .main-img {
+            width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+        }
+        .point-box {
+            background: #ffffff; border: 1px solid rgba(140, 118, 98, 0.15); border-radius: 8px;
+            padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+        .point-box h3 {
+            font-size: 1.2rem; font-weight: 500; color: var(--accent); margin-bottom: 20px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .point-box h3::before {
+            content: ''; display: block; width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%;
+        }
+        .btn-back {
+            display: inline-block; margin-top: 40px; font-size: 0.9rem; color: var(--text-sub); text-decoration: none;
+            border-bottom: 1px solid var(--text-sub); padding-bottom: 5px; transition: color 0.3s, border-color 0.3s;
+        }
+        .btn-back:hover { color: var(--accent); border-color: var(--accent); }
+    </style>
 </head>
 <body>
-    <div id="header"><div class="header-inner"><div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div></div></div>
-    <div class="nav-pc"><ul><li><a href="./index.html">ホーム</a></li><li><a href="./profile.html">会社概要</a></li></ul></div>
-    
-    <div class="container">
-        <h1>一つひとつのステップを、<br>誠実さと透明性とともに</h1>
-        <img class="main-img" src="../../../photo/content_menu/403_con_top_photo.jpg" alt="外壁流れ">
-        <p>
-            私たちの工事は、ただ壁を綺麗にする時間ではありません。お施主様はもちろんのこと、これまで皆様が地域で築いてこられた「ご近所様との良好な関係」もそのまま守るための、大切な丁寧さが求められます。
-        </p>
-        
-        <div class="point-box">
-            <h3>1. 土台を整える（足場・洗浄・下地・養生）</h3>
-            <p style="margin-bottom:0;">丁寧なご近所へのご挨拶から始まり、頑丈な足場を架設します。その後、高圧洗浄で長年の汚れを優しく洗い流し、傷んだ部分を労わるように補修（下地処理）した上で、塗料がつかないよう美しく養生を施します。</p>
-        </div>
 
-        <div class="point-box">
-            <h3>2. 想いを重ねる「3つの工程」</h3>
-            <p style="margin-bottom:0;">実際の塗装には「下塗り」「中塗り」「上塗り」という3つの工程があります。見えなくなってしまう最初の下地から一切手力を抜かず、3回しっかりと想いを重ねて塗り上げることで、10年先も剥がれない強さが生まれます。</p>
+    <div id="header">
+        <div class="header-inner">
+            <div class="logo"><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></div>
+            <div class="nav-pc">
+                <ul>
+                    <li><a href="./index.html">ホーム</a></li>
+                    <li><a href="./profile.html">会社概要</a></li>
+                </ul>
+            </div>
         </div>
-
-        <a href="./index.html" class="btn-back">← ホームへ戻る</a>
     </div>
 
-    <div class="copyright">Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.</div>
-    <div class="mobile-nav"><a href="./index.html" class="mobile-nav-item">ホーム</a><a href="./profile.html" class="mobile-nav-item">会社概要</a><a href="tel:09034081379" class="mobile-nav-item highlight">相談してみる</a></div>
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle3"></div>
+
+    <div class="page-header fade-in">
+        <h1 class="page-title">外壁がささやく、<br>優しいうちのSOS</h1>
+        <img class="main-img" src="../../../photo/content_menu/399_con_top_photo.jpg" alt="外壁">
+        <p class="story-text">
+            外壁は日々、言葉を話さない代わりに、見た目の変化で私たちに状態を教えてくれています。長い間放置してしまうと、雨や湿気が知らぬ間に内部に入り込み、大切な柱や基盤の腐食へと進行してしまいます。
+        </p>
+    </div>
+
+    <div class="content-section fade-in" style="padding-top: 0; max-width: 800px;">
+        <div class="point-box">
+            <h3>白い粉がつく「チョーキング現象」</h3>
+            <p class="story-text" style="margin-bottom:0;">壁にそっと触れたとき、手にチョークのような白い粉がつくのは、塗膜が紫外線で分解されている証拠。「そろそろ守ってね」という最初の優しいサインです。</p>
+        </div>
+
+        <div class="point-box">
+            <h3>微細なひび割れ（ヘアクラック）</h3>
+            <p class="story-text" style="margin-bottom:0;">髪の毛ほどの細い傷でも、信州の凍てつく冬にはその隙間の水分が凍って膨張し、大きなひび割れへと広がることがあります。手遅れになる前に、一度お茶でも飲みながら壁の状態を一緒に見てみませんか。</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="./index.html" class="btn-back">← ホームへ戻る</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="./index.html">ホーム</a>
+            <a href="./profile.html">会社概要</a>
+        </div>
+        <div class="copyright">
+            Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.<br>
+            <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.6; display: inline-block; margin-top: 8px;">〜 すべての「えん」を大切に 〜</span>
+        </div>
+    </footer>
+
+    <script>
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+        
+        window.onload = () => {
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('active'));
+        };
+    </script>
 </body>
 </html>
