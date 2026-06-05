@@ -22,6 +22,11 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
+    /* ▼ 【修正】iPhoneの横揺れバグを防ぐため、htmlにも指定を追加 ▼ */
+    html {
+        overflow-x: hidden;
+    }
+
     body { 
         font-family: var(--font-serif); 
         background-color: var(--bg-base); 
@@ -29,7 +34,10 @@
         line-height: 2.0; 
         letter-spacing: 0.08em; 
         padding-bottom: 70px; 
+        /* ▼ 【修正】横幅を画面サイズに固定してはみ出しを完全カット ▼ */
+        width: 100%;
         overflow-x: hidden;
+        position: relative;
     }
     @media (min-width: 962px) { body { padding-bottom: 0; } }
     
