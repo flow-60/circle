@@ -6,12 +6,10 @@
 <title>株式会社circle | 信州の職人による外壁塗装・リフォーム</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- 高級和モダンWebフォントの導入 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- スムーズな慣性スクロールライブラリ「Lenis」 -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
 <style>
@@ -64,27 +62,49 @@
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー（スクロールでガラス化）
+       ヘッダー（【修正】スマホスクロール時の縦幅を2/3に極薄化）
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
         background: transparent;
         border-bottom: 1px solid transparent; 
-        padding: 20px 6%; 
-        transition: background 0.5s var(--ease-premium), border-color 0.5s var(--ease-premium), backdrop-filter 0.5s var(--ease-premium);
+        padding: 16px 6%; /* 初期状態のパディング（少しゆったり） */
+        transition: padding 0.4s var(--ease-premium), background 0.5s var(--ease-premium), border-color 0.5s var(--ease-premium), backdrop-filter 0.5s var(--ease-premium);
     }
+    
+    /* スマホでスクロールした瞬間に発火するスタイル */
     #header.scrolled {
-        background: rgba(250, 248, 245, 0.82); 
+        background: rgba(250, 248, 245, 0.85); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
-        padding: 16px 6%;
+        padding: 10px 6%; /* 【修正】従来の2/3程度の細さにし、画面圧迫を解消 */
     }
+    
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo h2 { font-size: 1.2rem; font-weight: 500; letter-spacing: 0.12em; transition: color 0.5s; }
-    #header.scrolled .logo h2 { color: var(--text-main); }
+    
+    /* ロゴテキストの調整 */
+    .logo h2 { 
+        font-size: 1.1rem; 
+        font-weight: 500; 
+        letter-spacing: 0.12em; 
+        transition: color 0.5s, font-size 0.4s var(--ease-premium); 
+    }
+    /* 【修正】スマホスクロール時は文字サイズも一回り小さく、上品に佇むように */
+    #header.scrolled .logo h2 { 
+        color: var(--text-main); 
+        font-size: 0.95rem; 
+    }
     .logo a { color: #ffffff; } 
     #header.scrolled .logo a { color: var(--text-main); }
+    
+    /* PC用ヘッダー設定（PC時は適切な余裕を保持） */
+    @media (min-width: 768px) {
+        #header { padding: 20px 6%; }
+        #header.scrolled { padding: 16px 6%; }
+        .logo h2 { font-size: 1.2rem; }
+        #header.scrolled .logo h2 { font-size: 1.2rem; }
+    }
     
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
@@ -98,7 +118,7 @@
     }
 
     /* ==========================================================================
-       背景サークル（位置をCSS側で完全に確定させ、スマホでも絶対に見えるように修正）
+       背景サークル（前回のスマホダイナミック追従仕様のままです）
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -109,11 +129,8 @@
         border: 1px solid rgba(140, 110, 81, 0.12);
         border-radius: 50%;
         will-change: transform;
-        /* マウスが動いた際、または初期状態の滑らかな移行のための設定 */
-        transition: transform 1.2s cubic-bezier(0.1, 0.8, 0.2, 1);
-        transform: translate(0, 0); /* 初期状態を明示 */
+        transition: transform 1.4s cubic-bezier(0.1, 0.8, 0.2, 1);
     }
-    /* スマホ・PC双方で最も美しく空間を分かつ黄金比配置 */
     .circle-1 { width: 75vw; height: 75vw; top: -10vh; left: -15vw; }
     .circle-2 { width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; }
 
@@ -239,7 +256,7 @@
     }
 
     /* ==========================================================================
-       3つの「えん」（画面比率連動型スマホUI）
+       3つの「えん」
        ========================================================================== */
     .concept-grid {
         display: grid; grid-template-columns: 1fr; gap: 45px; margin-top: 40px;
@@ -341,20 +358,17 @@
 </head>
 <body>
 
-    <!-- 背景の円（CSS側でベース位置が確定しているため最初から確実に表示されます） -->
     <div class="bg-container">
         <div class="bg-circle circle-1" id="js-circle-1"></div>
         <div class="bg-circle circle-2" id="js-circle-2"></div>
     </div>
 
-    <!-- ヘッダー -->
     <div id="header">
         <div class="header-inner">
             <div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div>
         </div>
     </div>
     
-    <!-- PC用ナビゲーション -->
     <div class="nav-pc" id="js-nav-pc">
         <ul>
             <li><a href="./index.html">ホーム</a></li>
@@ -362,7 +376,6 @@
         </ul>
     </div>
 
-    <!-- メインビジュアル -->
     <section class="hero">
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
@@ -374,7 +387,6 @@
         </div>
     </section>
 
-    <!-- 私たちの想い -->
     <section class="content-section fade-in" style="max-width: 750px;">
         <h2 class="section-title">私たちの想い</h2>
         <p class="story-text">
@@ -388,7 +400,6 @@
         </p>
     </section>
 
-    <!-- ナビゲーションリンク構造 -->
     <section class="content-section fade-in">
         <h2 class="section-title">外壁塗装・リフォームを知る</h2>
         <p class="story-text" style="text-align: center; margin-bottom: 20px;">
@@ -405,7 +416,6 @@
         </div>
     </section>
 
-    <!-- 3つのえんセクション -->
     <section class="content-section fade-in">
         <h2 class="section-title">すべては、円のように繋がっている</h2>
         
@@ -442,7 +452,6 @@
         </div>
     </section>
 
-    <!-- 誓いセクション -->
     <section class="content-section fade-in" style="max-width: 1000px;">
         <h2 class="section-title">一刷毛に魂を込める、まっすぐな手仕事</h2>
         <div class="vow-flex">
@@ -464,22 +473,17 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <div id="footer">
         Copyright (C) kensetumap.com All Rights Reserved.<br>
         <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 すべての「えん」を大切に 〜</span>
     </div>
 
-    <!-- モバイルナビ -->
     <div class="mobile-nav">
         <a href="./index.html" class="mobile-nav-item">ホーム</a>
         <a href="./profile.html" class="mobile-nav-item">会社概要</a>
         <a href="tel:09034081379" class="mobile-nav-item highlight">無料相談はこちら</a>
     </div>
 
-<!-- ==========================================================================
-   JavaScriptシステム（バグ修正完了版）
-   ========================================================================== -->
 <script>
     const isMobile = window.innerWidth < 768;
 
@@ -532,7 +536,7 @@
     }
 
     /**
-     * 3. 複合ダイナミクス・マネージャー（バグ修正箇所）
+     * 3. 複合ダイナミクス・マネージャー
      */
     class DynamicInteractionManager {
         constructor() {
@@ -544,7 +548,6 @@
             this.init();
         }
         init() {
-            // スクロールに応じたヘッダーの変容
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
                 
@@ -556,22 +559,44 @@
                     if(this.navPc) this.navPc.classList.remove('scrolled');
                 }
 
+                const moveY = scrolled * 0.12; 
+                if (this.c1 && this.c2) {
+                    this.c1.style.transform = `translateY(${moveY}px)`;
+                    this.c2.style.transform = `translateY(${-moveY * 0.7}px)`;
+                }
+
                 if (!isMobile && this.heroBg) {
                     this.heroBg.style.transform = `translateY(${scrolled * 0.35}px)`;
                 }
             });
 
-            // 【修正】PCの時だけマウス移動に合わせて元の座標から相対的に揺らす（スマホ時は初期位置固定）
             if (!isMobile) {
                 document.addEventListener("mousemove", (e) => {
                     const x = (e.clientX / window.innerWidth - 0.5) * 40; 
                     const y = (e.clientY / window.innerHeight - 0.5) * 40;
+                    const scrolled = window.pageYOffset * 0.12;
                     
                     if (this.c1 && this.c2) {
-                        this.c1.style.transform = `translate(${x}px, ${y}px)`;
-                        this.c2.style.transform = `translate(${-x}px, ${-y}px)`;
+                        this.c1.style.transform = `translate(${x}px, ${y + scrolled}px)`;
+                        this.c2.style.transform = `translate(${-x}px, ${-y - (scrolled * 0.7)}px)`;
                     }
                 });
+            }
+
+            if (isMobile) {
+                document.addEventListener("touchmove", (e) => {
+                    if (e.touches.length > 0) {
+                        const touch = e.touches[0];
+                        const x = (touch.clientX / window.innerWidth - 0.5) * 25; 
+                        const y = (touch.clientY / window.innerHeight - 0.5) * 25;
+                        const scrolled = window.pageYOffset * 0.12;
+
+                        if (this.c1 && this.c2) {
+                            this.c1.style.transform = `translate(${x}px, ${y + scrolled}px)`;
+                            this.c2.style.transform = `translate(${-x}px, ${-y - (scrolled * 0.7)}px)`;
+                        }
+                    }
+                }, { passive: true });
             }
         }
     }
