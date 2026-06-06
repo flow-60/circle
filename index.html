@@ -27,64 +27,81 @@
         --accent: #8c6e51; 
         --accent-light: #f5ede4; 
         --border: #ede6df;
-        --accent-alpha: rgba(140, 110, 81, 0.12);
         
-        /* より洗練されたフォントアセット */
         --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
         --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
 
-        /* 高級イージング */
-        --ease-premium: cubic-bezier(0.19, 1, 0.22, 1);
-        --transition-smooth: opacity 1.4s var(--ease-premium), transform 1.4s var(--ease-premium);
+        --ease-premium: cubic-bezier(0.16, 1, 0.3, 1); /* スマホの速度感に合わせたキレのあるイージング */
+        --transition-smooth: opacity 1.2s var(--ease-premium), filter 1.2s var(--ease-premium), letter-spacing 1.2s var(--ease-premium);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     html { 
         overflow-x: hidden; 
-        scroll-behavior: initial; /* Lenisの動作に必須 */
+        scroll-behavior: initial;
+        /* ⑧ スマホ環境での縦スナップ設定（高級旅館サイトの操作感） */
+        scroll-snap-type: y mandatory;
     }
 
     body { 
         font-family: var(--font-serif); 
         background-color: var(--bg-base); 
         color: var(--text-main); 
-        line-height: 2.3; /* 行間を広げて贅沢な空気感を演出 */
-        letter-spacing: 0.1em; 
-        padding-bottom: 70px; 
+        line-height: 2.05; /* ② スマホで読む前に疲れない、計算された絶妙な行間 */
+        letter-spacing: 0.08em; 
+        padding-bottom: 90px; 
         width: 100%;
         overflow-x: hidden;
         position: relative;
         -webkit-font-smoothing: antialiased;
     }
-    @media (min-width: 962px) { body { padding-bottom: 0; } }
+    
+    /* PC環境では従来通りのゆったりとした空気感に戻す */
+    @media (min-width: 768px) {
+        html { scroll-snap-type: none; }
+        body { line-height: 2.3; letter-spacing: 0.1em; padding-bottom: 0; }
+    }
     
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー ＆ ナビゲーション（構造の最適化）
+       ⑥ スクロール連動ヘッダー（最初透明 ➔ スクロールでガラス化）
        ========================================================================== */
     #header { 
-        position: sticky; top: 0; left: 0; width: 100%; z-index: 100; 
-        background: rgba(250, 248, 245, 0.93); backdrop-filter: blur(12px); 
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border); padding: 22px 4%; 
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
+        background: transparent;
+        border-bottom: 1px solid transparent; 
+        padding: 20px 6%; 
+        transition: background 0.5s var(--ease-premium), border-color 0.5s var(--ease-premium), backdrop-filter 0.5s var(--ease-premium);
+    }
+    /* スクロール後に付与されるガラスクラス */
+    #header.scrolled {
+        background: rgba(250, 248, 245, 0.82); 
+        backdrop-filter: blur(18px); 
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 6%;
     }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo h2 { font-size: 1.3rem; font-weight: 500; letter-spacing: 0.12em; }
-    .logo a { color: var(--text-main); }
+    .logo h2 { font-size: 1.2rem; font-weight: 500; letter-spacing: 0.12em; transition: color 0.5s; }
+    #header.scrolled .logo h2 { color: var(--text-main); }
+    .logo a { color: #ffffff; } /* 初期状態（Hero背景の上）では白文字 */
+    #header.scrolled .logo a { color: var(--text-main); }
     
-    /* PCナビ：重なりバグを防ぐためstickyヘッダーの直下に自然に配置 */
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
-        .nav-pc { display: block; width: 100%; background: rgba(250, 248, 245, 0.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); } 
-        .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid var(--border); } 
-        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: var(--text-sub); position: relative; } 
-        .nav-pc ul li a:hover { color: var(--accent); }
+        .nav-pc { display: block; position: fixed; top: 75px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
+        .nav-pc.scrolled { top: 65px; background: rgba(250, 248, 245, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid transparent; } 
+        .nav-pc.scrolled ul { border-bottom: 1px solid var(--border); }
+        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); } 
+        .nav-pc.scrolled ul li a { color: var(--text-sub); }
+        .nav-pc ul li a:hover { color: var(--accent) !important; }
     }
 
     /* ==========================================================================
-       静寂を演出する背景サークル（浮遊アニメーションから有機的追従へ）
+       ③ 背景サークル（スマホでは静止、PCのみ微細なマウス追従でバッテリー保護）
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -92,188 +109,265 @@
     }
     .bg-circle {
         position: absolute;
-        border: 1px solid rgba(140, 110, 81, 0.15);
+        border: 1px solid rgba(140, 110, 81, 0.12);
         border-radius: 50%;
         will-change: transform;
-        transition: transform 1.2s cubic-bezier(0.1, 0.8, 0.2, 1);
     }
     .circle-1 { width: 75vw; height: 75vw; top: -15vh; left: -10vw; }
     .circle-2 { width: 55vw; height: 55vw; bottom: -15vh; right: -10vw; }
 
     /* ==========================================================================
-       動的演出（フェードイン・高級イージング）
+       ⑦ 呼吸する余白アニメ（Blur ＆ Letter-spacing）
        ========================================================================== */
     .fade-in {
         opacity: 0; 
-        transform: translateY(50px);
+        filter: blur(12px);
+        letter-spacing: 0.22em;
         transition: var(--transition-smooth);
     }
     .fade-in.active { 
         opacity: 1; 
-        transform: translateY(0); 
+        filter: blur(0);
+        letter-spacing: 0.08em; /* 元の文字詰めに静かに戻る */
+    }
+    @media (min-width: 768px) {
+        .fade-in.active { letter-spacing: 0.1em; }
     }
     .keep-word { display: inline-block; }
 
     /* ==========================================================================
-       メインビジュアル（ヒーロー領域）
+       ① Hero領域（アドレスバー問題を殺すsvh/dvh設計 ＆ 縦スナップ）
        ========================================================================== */
     .hero {
-        position: relative; width: 100%; height: 100vh;
+        position: relative; width: 100%; 
+        min-height: 100svh;
+        height: 100dvh;
         display: flex; align-items: center; justify-content: center; overflow: hidden;
+        scroll-snap-align: start; /* ⑧ 縦スナップの起点 */
     }
     .hero::after {
         content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to bottom, rgba(45,38,33,0.35) 0%, rgba(45,38,33,0.65) 100%); z-index: 1;
+        background: linear-gradient(to bottom, rgba(45,38,33,0.4) 0%, rgba(45,38,33,0.7) 100%); z-index: 1;
     }
     .hero-bg {
-        position: absolute; top: 0; left: 0; width: 100%; height: 130%; 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
         background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=1600'); 
-        background-size: cover; background-position: center; will-change: transform;
+        background-size: cover; background-position: center;
+        will-change: transform;
+    }
+    @media (min-width: 768px) {
+        .hero-bg { height: 130%; } /* PCのみパララックス用の余白を持たせる */
     }
     .hero-content {
-        position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 24px; margin-top: 40px;
+        position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 24px; margin-top: 20px;
     }
-    .hero-title { font-size: 1.6rem; font-weight: 400; margin-bottom: 30px; line-height: 2.2; letter-spacing: 0.15em; }
-    .hero-sub { font-family: var(--font-sans); font-size: 0.95rem; letter-spacing: 0.35em; opacity: 0.85; font-weight: 300; text-transform: uppercase; }
+    .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; }
+    
+    /* ⑩ Hero文字の1文字フェードイン演出用のベース設定 */
+    .char {
+        display: inline-block;
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(10px);
+        transition: opacity 0.8s var(--ease-premium), filter 0.8s var(--ease-premium), transform 0.8s var(--ease-premium);
+    }
+    .char.animate {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+    
+    .hero-sub { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.35em; opacity: 0.75; font-weight: 300; text-transform: uppercase; }
     @media (min-width: 768px) {
-        .hero-title { font-size: 2.4rem; }
+        .hero-title { font-size: 2.4rem; line-height: 2.3; }
+        .hero-sub { font-size: 0.95rem; }
     }
 
     /* ==========================================================================
        セクション共通設計
        ========================================================================== */
     .content-section {
-        position: relative; z-index: 1; padding: 160px 6%; max-width: 900px; margin: 0 auto;
+        position: relative; z-index: 1; padding: 90px 6%; max-width: 900px; margin: 0 auto;
+        scroll-snap-align: start; /* ⑧ 縦スナップの起点 */
+    }
+    @media (min-width: 768px) {
+        .content-section { padding: 160px 4%; }
     }
     .section-title {
-        font-size: 1.6rem; font-weight: 400; color: var(--accent); margin-bottom: 60px;
+        font-size: 1.35rem; font-weight: 400; color: var(--accent); margin-bottom: 40px;
         text-align: center; letter-spacing: 0.15em;
     }
     .section-title::after {
-        content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background-color: var(--accent); margin: 24px auto 0;
+        content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: var(--accent); margin: 20px auto 0;
     }
     .story-text {
-        font-size: 1rem; color: var(--text-sub); margin-bottom: 35px; text-align: justify; font-weight: 300;
+        font-size: 0.95rem; color: var(--text-sub); margin-bottom: 28px; text-align: justify; font-weight: 300;
+    }
+    @media (min-width: 768px) {
+        .section-title { font-size: 1.6rem; margin-bottom: 60px; }
+        .story-text { font-size: 1rem; margin-bottom: 35px; }
     }
 
     /* ==========================================================================
        各ページへのリンクボタン（洗練されたカード型）
        ========================================================================== */
     .link-grid {
-        display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px;
+        display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 35px;
+    }
+    @media (min-width: 768px) {
+        .link-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
     }
     .link-card {
         display: flex; justify-content: space-between; align-items: center;
         background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-        padding: 28px 24px; text-decoration: none; color: var(--text-main); font-weight: 400;
+        padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400;
         box-shadow: 0 4px 20px rgba(45, 38, 33, 0.01);
+        font-size: 0.95rem;
         transition: var(--transition-smooth);
     }
     .link-card .arrow { color: var(--accent); font-family: var(--font-sans); transition: transform 0.4s var(--ease-premium); }
     
-    @media (min-width: 962px) {
-        .link-card:hover {
-            border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(140, 110, 81, 0.06);
-        }
+    @media (min-width: 768px) {
+        .link-card { padding: 28px 24px; font-size: 1rem; }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(140, 110, 81, 0.06); }
         .link-card:hover .arrow { transform: translateX(6px); }
     }
 
     /* ==========================================================================
-       3つの「えん」（3カラム・高級ホバー）
+       3つの「えん」（3カラム ➔ ⑨画面比率連動型スマホUI）
        ========================================================================== */
     .concept-grid {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px;
+        display: grid; grid-template-columns: 1fr; gap: 45px; margin-top: 40px;
+    }
+    @media (min-width: 768px) {
+        .concept-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
     }
     .concept-block { display: flex; flex-direction: column; }
-    .concept-image-wrapper { width: 100%; height: 220px; overflow: hidden; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(45, 38, 33, 0.03); }
+    
+    /* ⑨ スマホは「画面横幅連動比率（52vw）」、PCは固定ピクセルで美しく固定 */
+    .concept-image-wrapper { 
+        width: 100%; 
+        height: 52vw; 
+        overflow: hidden; 
+        border-radius: 12px; 
+        margin-bottom: 20px; 
+        box-shadow: 0 10px 30px rgba(45, 38, 33, 0.03); 
+    }
+    @media (min-width: 768px) {
+        .concept-image-wrapper { height: 220px; margin-bottom: 24px; }
+    }
+    
     .concept-image {
         width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-premium);
     }
-    .concept-label { font-size: 1.15rem; font-weight: 500; color: var(--text-main); margin-bottom: 20px; letter-spacing: 0.05em; }
-    
-    @media (min-width: 962px) {
+    .concept-label { font-size: 1.05rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; letter-spacing: 0.05em; }
+    @media (min-width: 768px) {
+        .concept-label { font-size: 1.15rem; margin-bottom: 20px; }
         .concept-block:hover .concept-image { transform: scale(1.06); }
     }
 
     /* ==========================================================================
        誓いセクション（左右分割＋画像）
        ========================================================================== */
-    .vow-flex { display: flex; align-items: center; gap: 60px; margin-top: 40px; }
+    .vow-flex { display: flex; flex-direction: column; gap: 35px; margin-top: 30px; }
+    
+    /* ⑨ こちらの画像もスマホでは黄金比率（55vw）で画面に完全にフィットさせる */
     .vow-image {
-        flex: 1; height: 440px; border-radius: 12px;
+        width: 100%; height: 55vw; border-radius: 12px;
         background-image: url('https://images.unsplash.com/photo-1590422750133-c97fb95e78fb?auto=format&fit=crop&q=80&w=1000');
-        background-size: cover; background-position: center; box-shadow: 0 20px 45px rgba(45, 38, 33, 0.06);
+        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(45, 38, 33, 0.05);
     }
-    .vow-content { flex: 1; }
+    .vow-content { width: 100%; }
     .story-highlight {
-        font-size: 1.35rem; color: var(--text-main); font-weight: 500; margin: 50px 0 20px 0; line-height: 1.8; text-align: center; color: var(--accent);
+        font-size: 1.15rem; color: var(--accent); font-weight: 500; margin: 35px 0 20px 0; line-height: 1.8; text-align: center;
+    }
+    
+    @media (min-width: 768px) {
+        .vow-flex { flex-direction: row; gap: 60px; margin-top: 40px; }
+        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(45, 38, 33, 0.06); }
+        .vow-content { flex: 1; }
+        .story-highlight { font-size: 1.35rem; margin: 50px 0 20px 0; }
     }
 
     /* ==========================================================================
-       フッター ＆ スマホ固定メニュー
+       フッター ＆ ④⑤モバイル極上ナビ（半透明フローティング×高級グラデーション）
        ========================================================================== */
     #footer { 
-        border-top: 1px solid var(--border); padding: 60px 6% 80px 6%; text-align: center; 
+        border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; 
         font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); position: relative; z-index: 2;
+        scroll-snap-align: end;
     }
+    @media (min-width: 768px) { #footer { padding: 60px 4% 40px 4%; } }
 
+    /* ④ 半透明フローティング化による圧倒的ハイブランド感 */
     .mobile-nav { 
-        position: fixed; bottom: 0; left: 0; width: 100%; height: 64px; 
-        background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-        border-top: 1px solid var(--border); display: flex; z-index: 999; box-shadow: 0 -4px 16px rgba(45, 38, 33, 0.03);
+        position: fixed; 
+        width: calc(100% - 24px);
+        left: 12px;
+        bottom: 12px;
+        height: 68px; 
+        background: rgba(255, 255, 255, 0.72); 
+        backdrop-filter: blur(18px); 
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(237, 230, 223, 0.7);
+        border-radius: 20px;
+        display: flex; 
+        padding: 6px;
+        z-index: 999; 
+        box-shadow: 0 10px 30px rgba(45, 38, 33, 0.08);
     }
+    @media (min-width: 768px) { .mobile-nav { display: none; } }
+    
     .mobile-nav-item { 
         flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; border-right: 1px solid var(--border); 
+        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; 
+        letter-spacing: 0.05em;
     }
-    .mobile-nav-item:last-child { border-right: none; }
-    .mobile-nav-item.highlight { background: var(--accent); color: #ffffff; }
-    .mobile-nav-item:active { background: var(--accent-light); }
-    .mobile-nav-item.highlight:active { background: var(--text-main); }
-
-    /* ==========================================================================
-       レスポンシブ微調整（モバイルファーストの補正）
-       ========================================================================== */
-    @media (max-width: 900px) {
-        .hero-title { font-size: 1.4rem; line-height: 2.0; }
-        .content-section { padding: 100px 6%; }
-        .link-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 35px; }
-        .concept-grid { grid-template-columns: 1fr; gap: 60px; margin-top: 40px; }
-        .concept-image-wrapper { height: 240px; }
-        .vow-flex { flex-direction: column; gap: 40px; }
-        .vow-image { width: 100%; height: 300px; }
-        .story-highlight { margin: 30px 0 20px 0; font-size: 1.2rem; }
+    
+    /* ⑤ 思わず指で触れたくなる、有機的で滑らかな色彩のコンサルティングCTAボタン */
+    .mobile-nav-item.highlight { 
+        flex: 1.4;
+        background: linear-gradient(135deg, #8c6e51, #a98a6d); 
+        color: #ffffff; 
+        border-radius: 15px;
+        font-size: 0.75rem;
+        box-shadow: 0 4px 15px rgba(140, 110, 81, 0.25);
+        transition: transform 0.2s ease;
+    }
+    .mobile-nav-item.highlight:active {
+        transform: scale(0.96); /* 指に吸い付くような押し心地のフィードバック */
     }
 </style>
 </head>
 <body>
 
-    <!-- 有機的に連動する背景の円 -->
+    <!-- 背景の円 -->
     <div class="bg-container">
         <div class="bg-circle circle-1" id="js-circle-1"></div>
         <div class="bg-circle circle-2" id="js-circle-2"></div>
     </div>
 
     <!-- ヘッダー -->
-    <div id="header">
+    <div id="header" id="js-header">
         <div class="header-inner">
             <div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div>
         </div>
     </div>
     
     <!-- PC用ナビゲーション -->
-    <div class="nav-pc">
+    <div class="nav-pc" id="js-nav-pc">
         <ul>
             <li><a href="./index.html">ホーム</a></li>
             <li><a href="./profile.html">会社概要</a></li>
         </ul>
     </div>
 
-    <!-- メインビジュアル -->
+    <!-- 100dvh & 1文字アニメーション内包のメインビジュアル -->
     <section class="hero">
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
-            <h1 class="hero-title">
+            <!-- ⑩ 1文字ずつ文脈を持って浮かび上がらせるコンポーネント構造 -->
+            <h1 class="hero-title" id="js-hero-title">
                 <span class="keep-word">この街で出会えた</span><span class="keep-word">「縁」とともに。</span><br>
                 <span class="keep-word">住まいが蘇る、</span><span class="keep-word">次の「円」へ。</span>
             </h1>
@@ -377,24 +471,28 @@
         <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 すべての「えん」を大切に 〜</span>
     </div>
 
-    <!-- スマートフォン用ボトム固定メニュー -->
+    <!-- ④⑤ 半透明フローティング＆グラデーションCTAメニュー -->
     <div class="mobile-nav">
         <a href="./index.html" class="mobile-nav-item">ホーム</a>
         <a href="./profile.html" class="mobile-nav-item">会社概要</a>
-        <a href="tel:09034081379" class="mobile-nav-item highlight">相談してみる</a>
+        <a href="tel:09034081379" class="mobile-nav-item highlight">無料相談はこちら</a>
     </div>
 
 <!-- ==========================================================================
-   JavaScriptシステム（慣性スクロール・パララックス・インタラクション）
+   JavaScriptシステム（スマホ最適化インテリジェンス）
    ========================================================================== -->
 <script>
+    const isMobile = window.innerWidth < 768;
+
     /**
-     * 1. 慣性スクロール（Lenis）のインテグレーション
+     * 1. 慣性スクロール（Lenis）
+     * スマホ環境でも滑らかに動作しますが、縦スナップ（scroll-snap）と共存させるため
+     * 必要に応じてチューニング。PCでは極上のヌルヌル感を担保。
      */
     class SmoothScrollManager {
         constructor() {
             this.lenis = new Lenis({
-                duration: 1.2,
+                duration: isMobile ? 1.0 : 1.2, // スマホは「速度感」重視で少しタイトに
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 orientation: 'vertical',
                 gestureOrientation: 'vertical',
@@ -412,12 +510,16 @@
     }
 
     /**
-     * 2. スクロール連動モーション（IntersectionObserver）
+     * 2. 余白が呼吸するスクロール連動モーション（IntersectionObserver）
      */
     class RevealController {
         constructor() {
             this.elements = document.querySelectorAll('.fade-in');
-            this.options = { threshold: 0.1, rootMargin: "0px 0px -60px 0px" };
+            // スマホはスクロールが速いため、遅延を少なく(rootMarginの調整)してレスポンスを最速化
+            this.options = { 
+                threshold: 0.05, 
+                rootMargin: isMobile ? "0px 0px -20px 0px" : "0px 0px -80px 0px" 
+            };
             this.init();
         }
         init() {
@@ -434,26 +536,39 @@
     }
 
     /**
-     * 3. 背景のサークル追従 ＆ メインビジュアルのパララックス
+     * 3. 複合ダイナミクス・マネージャー
+     * ⑥ヘッダーのガラス化 / ③スマホでの重い演出の制限 / パララックス
      */
-    class ParallaxAndInteractionManager {
+    class DynamicInteractionManager {
         constructor() {
+            this.header = document.getElementById('header');
+            this.navPc = document.getElementById('js-nav-pc');
             this.heroBg = document.getElementById('heroBg');
             this.c1 = document.getElementById("js-circle-1");
             this.c2 = document.getElementById("js-circle-2");
             this.init();
         }
         init() {
-            // スクロール連動（メインビジュアルのパララックス）
+            // ⑥ スクロールに応じたヘッダーの変容（透明 ➔ ガラス化）
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
-                if (this.heroBg) {
+                
+                if (scrolled > 50) {
+                    this.header.classList.add('scrolled');
+                    if(this.navPc) this.navPc.classList.add('scrolled');
+                } else {
+                    this.header.classList.remove('scrolled');
+                    if(this.navPc) this.navPc.classList.remove('scrolled');
+                }
+
+                // PC環境のみ重いパララックス背景を許可（スマホは処理をスキップして軽量化）
+                if (!isMobile && this.heroBg) {
                     this.heroBg.style.transform = `translateY(${scrolled * 0.35}px)`;
                 }
             });
 
-            // マウス連動（背景抽象サークルの微細な動き）
-            if (window.matchMedia("(min-width: 962px)").matches) {
+            // ③ マウス連動（背景の抽象サークル追従：PCのみ動かし、スマホはバッテリー保護のため完全静止）
+            if (!isMobile) {
                 document.addEventListener("mousemove", (e) => {
                     const x = (e.clientX / window.innerWidth - 0.5) * 40; 
                     const y = (e.clientY / window.innerHeight - 0.5) * 40;
@@ -467,11 +582,64 @@
         }
     }
 
-    // ドキュメント読み込み完了時にすべてのクラスをインスタンス化
+    /**
+     * 4. ⑩ Heroタイトルの1文字ずつフェードイン（作品感の演出）
+     */
+    class TypographyAnimator {
+        constructor() {
+            this.titleContainer = document.getElementById('js-hero-title');
+            this.init();
+        }
+        init() {
+            if (!this.titleContainer) return;
+            
+            const text = this.titleContainer.innerHTML;
+            // `<br>`やタグ、keep-word構造を維持しつつ文字を分解
+            const regex = /(\s*<[^>]*>.*?<\/[^>]*>\s*|<br>|.)/g;
+            const matches = text.match(regex);
+            
+            let newHTML = '';
+            let delayIndex = 0;
+
+            matches.forEach((chunk) => {
+                if (chunk === '<br>') {
+                    newHTML += '<br>';
+                } else if (chunk.startsWith('<span')) {
+                    // keep-wordのスパンタグの内部テキストのみをさらに1文字ずつ分解
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(chunk, 'text/html');
+                    const spanText = doc.body.textContent;
+                    const className = doc.body.querySelector('span').className;
+                    
+                    let spanInner = `<span class="${className}">`;
+                    for (let char of spanText) {
+                        spanInner += `<span class="char" style="transition-delay: ${delayIndex * 0.04}s">${char}</span>`;
+                        delayIndex++;
+                    }
+                    spanInner += '</span>';
+                    newHTML += spanInner;
+                } else {
+                    newHTML += `<span class="char" style="transition-delay: ${delayIndex * 0.04}s">${chunk}</span>`;
+                    delayIndex++;
+                }
+            });
+
+            this.titleContainer.innerHTML = newHTML;
+
+            // 画面表示後に一瞬のタメを置いてからアニメーションを開始
+            setTimeout(() => {
+                const chars = this.titleContainer.querySelectorAll('.char');
+                chars.forEach(char => char.classList.add('animate'));
+            }, 300);
+        }
+    }
+
+    // ドキュメント読み込み完了時にすべてのシステムを精緻に起動
     document.addEventListener("DOMContentLoaded", () => {
         new SmoothScrollManager();
         new RevealController();
-        new ParallaxAndInteractionManager();
+        new DynamicInteractionManager();
+        new TypographyAnimator();
     });
 </script>
 </body>
