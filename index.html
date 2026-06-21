@@ -6,12 +6,10 @@
 <title>株式会社circle | 信州の暮らしをトータルで支える総合建築・リフォーム・外壁塗装</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- スムーススクロール用ライブラリ -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
 <style>
@@ -59,7 +57,7 @@
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー（ロゴサイズ調整）
+       ヘッダー（ロゴサイズをさらに少し拡大）
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
@@ -80,21 +78,21 @@
     
     .logo a { display: block; line-height: 0; }
     .logo img {
-        height: 44px; /* ロゴサイズを少し拡大 */
+        height: 48px; /* ロゴサイズをもう一回り拡大 */
         width: auto;
         object-fit: contain;
         transition: height 0.4s var(--ease-premium);
     }
     
     #header.scrolled .logo img { 
-        height: 38px; /* スクロール時も少し拡大 */
+        height: 42px;
     }
     
     @media (min-width: 768px) {
         #header { padding: 24px 6%; }
         #header.scrolled { padding: 14px 6%; }
-        .logo img { height: 54px; }
-        #header.scrolled .logo img { height: 48px; }
+        .logo img { height: 60px; /* PC版も拡大 */ }
+        #header.scrolled .logo img { height: 50px; }
     }
     
     /* ナビゲーションPC版 */
@@ -119,7 +117,6 @@
 
     .fade-in { opacity: 0; filter: blur(12px); transition: var(--transition-smooth); }
     .fade-in.active { opacity: 1; filter: blur(0); }
-    .keep-word { display: inline-block; }
 
     /* ==========================================================================
        Hero
@@ -128,8 +125,6 @@
     .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('images/toppage.png'); background-size: cover; background-position: center; }
     .hero-content { position: relative; z-index: 2; text-align: center; color: var(--text-main); padding: 0 24px; margin-top: 40px; }
     .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; }
-    .char { display: inline-block; opacity: 0; filter: blur(6px); transform: translateY(10px); transition: opacity 0.8s var(--ease-premium), filter 0.8s var(--ease-premium), transform 0.8s var(--ease-premium); }
-    .char.animate { opacity: 1; filter: blur(0); transform: translateY(0); }
     
     @media (min-width: 768px) {
         .hero-title { font-size: 2.4rem; line-height: 2.3; }
@@ -141,11 +136,12 @@
     .content-section { position: relative; z-index: 1; padding: 90px 6%; max-width: 900px; margin: 0 auto; }
     .section-title { font-size: 1.35rem; font-weight: 400; color: var(--accent); margin-bottom: 40px; text-align: center; letter-spacing: 0.15em; }
     .section-title::after { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: var(--accent); margin: 20px auto 0; }
-    .story-text { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 28px; text-align: justify; font-weight: 300; }
+    .story-text { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 28px; text-align: left; font-weight: 300; }
     
     @media (min-width: 768px) {
         .content-section { padding: 160px 4%; }
         .section-title { font-size: 1.6rem; }
+        .story-text { text-align: center; } /* PCでは中央揃えに */
     }
 
     /* ==========================================================================
@@ -157,30 +153,41 @@
     .link-card .arrow { color: var(--accent); }
 
     /* ==========================================================================
-       3つの「えん」セクション（横長調整）
+       3つの「えん」セクション（横長比率・顔切れ対策・改行調整）
        ========================================================================== */
     .concept-container { display: flex; flex-direction: column; gap: 60px; margin-top: 50px; }
     
     .concept-row { display: flex; flex-direction: column; gap: 24px; }
     
-    /* 横長にするための調整 */
     .concept-image-wrapper { 
         width: 100%; 
-        aspect-ratio: 21 / 9; /* 横長比率に変更 */
+        aspect-ratio: 2.5 / 1; /* 強制的に横長の細いエリアに設定 */
         overflow: hidden; 
         border-radius: 14px; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
     }
     
-    .concept-image { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-premium); }
+    .concept-image { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        object-position: center 20%; /* 【重要】画像の中心ではなく、少し上部（顔）にピントを合わせる */
+        transition: transform 1.4s var(--ease-premium); 
+    }
     
     .concept-label { font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; }
     .concept-label::after { content: ''; display: block; width: 40px; height: 1px; background-color: var(--accent); margin-top: 8px; }
-    .concept-text { font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; text-align: justify; }
+    
+    .concept-text { 
+        font-size: 0.95rem; 
+        color: var(--text-sub); 
+        line-height: 1.9; 
+        text-align: left; /* 不自然な空白を無くすため左揃え */
+    }
 
     @media (min-width: 768px) {
         .concept-row { flex-direction: row; align-items: center; gap: 60px; }
-        .concept-image-wrapper { width: 50%; aspect-ratio: 16 / 9; flex-shrink: 0; } /* デスクトップでもワイドに */
+        .concept-image-wrapper { width: 50%; aspect-ratio: 1.8 / 1; flex-shrink: 0; } 
         .concept-label { font-size: 1.45rem; }
     }
 
@@ -221,8 +228,8 @@
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
             <h1 class="hero-title" id="js-hero-title">
-                <span class="keep-word">この街で出会えた</span><span class="keep-word">「縁」とともに。</span><br>
-                <span class="keep-word">住まいが蘇る、</span><span class="keep-word">次の「円」へ。</span>
+                この街で出会えた「縁」とともに。<br>
+                住まいが蘇る、次の「円」へ。
             </h1>
         </div>
     </section>
@@ -230,10 +237,9 @@
     <section class="content-section fade-in" style="max-width: 750px;">
         <h2 class="section-title">私たちの想い</h2>
         <p class="story-text">
-            <span class="keep-word">住まいを整える。</span><span class="keep-word">それは、単なる</span><span class="keep-word">「工事」ではありません。</span>
-        </p>
-        <p class="story-text">
-            <span class="keep-word">これまで家族が</span><span class="keep-word">帰ってきた日の記憶、</span><span class="keep-word">子どもたちが成長した</span><span class="keep-word">日々の足跡。</span><span class="keep-word">お家には目に見えない</span><span class="keep-word">大切な思い出が</span><span class="keep-word">刻まれています。</span>
+            住まいを整える。それは、単なる「工事」ではありません。<br><br>
+            これまで家族が帰ってきた日の記憶、子どもたちが成長した日々の足跡。<br>
+            お家には目に見えない大切な思い出が刻まれています。
         </p>
     </section>
 
@@ -257,7 +263,11 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの再生の円</h3>
-                    <p class="concept-text">傷んだ場所を優しく労わり、次の10年、20年へと心地よく循環していくための『再生』をお届けします。</p>
+                    <p class="concept-text">
+                        傷んだ場所を優しく労わり、<br>
+                        次の10年、20年へと心地よく循環していくための<br>
+                        『再生』をお届けします。
+                    </p>
                 </div>
             </div>
 
@@ -267,7 +277,12 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">笑顔の円</h3>
-                    <p class="concept-text">ひとつの良い仕事が、施主様の笑顔になり、それがご近所様の笑顔になり、地域へと広がっていく。円を描くようにみんなの幸せが繋がっていくことが、私たちの理想です。</p>
+                    <p class="concept-text">
+                        ひとつの良い仕事が、施主様の笑顔になり、<br>
+                        それがご近所様の笑顔になり、地域へと広がっていく。<br>
+                        円を描くようにみんなの幸せが繋がっていくことが、<br>
+                        私たちの理想です。
+                    </p>
                 </div>
             </div>
 
@@ -277,7 +292,11 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの未来の円</h3>
-                    <p class="concept-text">目に見える美しさだけでなく、住まいの安心と快適が、未来へと続いていく。その未来まで支えることが、私たちの使命です。</p>
+                    <p class="concept-text">
+                        目に見える美しさだけでなく、<br>
+                        住まいの安心と快適が、未来へと続いていく。<br>
+                        その未来まで支えることが、私たちの使命です。
+                    </p>
                 </div>
             </div>
         </div>
@@ -307,6 +326,20 @@
             header.classList.remove('scrolled');
             if(navPc) navPc.classList.remove('scrolled');
         }
+    });
+
+    // 簡単なフェードインアニメーション
+    window.addEventListener('DOMContentLoaded', () => {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeEls.forEach(el => observer.observe(el));
     });
 </script>
 </body>
