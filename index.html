@@ -6,25 +6,27 @@
 <title>株式会社circle | 信州の暮らしをトータルで支える総合建築・リフォーム・外壁塗装</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+<!-- スムーススクロール用ライブラリ -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
 <style>
     /* ==========================================================================
-       デザインシステム ＆ 変数定義（ご提供ロゴのプレミアムネイビー＆ゴールドに完全最適化）
+       デザインシステム ＆ 変数定義（プレミアムネイビー＆ゴールド）
        ========================================================================== */
     :root {
-        --bg-base: #f5f7fa;         /* 透明感のあるモダンな背景 */
+        --bg-base: #f7f6f3;         /* image.pngの背景にあるような上質な生成り・アースカラー */
         --bg-card: #ffffff;         
-        --text-main: #0c1b33;       /* ロゴに合わせた気品ある深いネイビー */
-        --text-sub: #33445e;        
-        --text-muted: #7e8f9f;
-        --accent: #cfab5a;          /* ロゴに調和する美しく輝くプレミアムゴールド */
-        --accent-light: #f7f4ed;    
-        --border: #e1e7ee;
+        --text-main: #2b2b2b;       
+        --text-sub: #4a4a4a;        
+        --text-muted: #8c8c8c;
+        --accent: #b89851;          /* 落ち着いたゴールド */
+        --accent-light: #fdfbf7;    
+        --border: #e6e4e0;
         
         --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
         --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
@@ -38,14 +40,13 @@
     html { 
         overflow-x: hidden; 
         scroll-behavior: initial;
-        scroll-snap-type: y mandatory;
     }
 
     body { 
         font-family: var(--font-serif); 
         background-color: var(--bg-base); 
         color: var(--text-main); 
-        line-height: 2.05; 
+        line-height: 2.1; 
         letter-spacing: 0.08em; 
         padding-bottom: 90px; 
         width: 100%;
@@ -55,14 +56,13 @@
     }
     
     @media (min-width: 768px) {
-        html { scroll-snap-type: none; }
-        body { line-height: 2.3; letter-spacing: 0.1em; padding-bottom: 0; }
+        body { line-height: 2.4; letter-spacing: 0.1em; padding-bottom: 0; }
     }
     
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー（ロゴ画像表示・スクロール時変化）
+       ヘッダー
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
@@ -73,7 +73,7 @@
     }
     
     #header.scrolled {
-        background: rgba(245, 247, 250, 0.88); 
+        background: rgba(247, 246, 243, 0.88); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
@@ -88,13 +88,11 @@
         height: 38px; 
         width: auto;
         object-fit: contain;
-        filter: drop-shadow(0px 2px 4px rgba(12,27,51,0.15));
-        transition: height 0.4s var(--ease-premium), filter 0.4s var(--ease-premium);
+        transition: height 0.4s var(--ease-premium);
     }
     
     #header.scrolled .logo img { 
         height: 32px; 
-        filter: none;
     }
     
     @media (min-width: 768px) {
@@ -107,16 +105,16 @@
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
         .nav-pc { display: block; position: fixed; top: 85px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
-        .nav-pc.scrolled { top: 68px; background: rgba(245, 247, 250, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc.scrolled { top: 68px; background: rgba(247, 246, 243, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
         .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid transparent; } 
         .nav-pc.scrolled ul { border-bottom: 1px solid var(--border); }
-        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px rgba(0,0,0,0.2); } 
-        .nav-pc.scrolled ul li a { color: var(--text-sub); text-shadow: none; }
+        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(43,43,43,0.8); } 
+        .nav-pc.scrolled ul li a { color: var(--text-sub); }
         .nav-pc ul li a:hover { color: var(--accent) !important; }
     }
 
     /* ==========================================================================
-       背景サークル
+       デザイン用：細線幾何学サークル (image.png / image_2.pngのニュアンス)
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -130,11 +128,11 @@
     }
     .circle-1 { 
         width: 75vw; height: 75vw; top: -10vh; left: -15vw; 
-        border: 1px solid rgba(12, 27, 51, 0.05);
+        border: 1px solid rgba(184, 152, 81, 0.08);
     }
     .circle-2 { 
         width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; 
-        border: 1px solid rgba(207, 171, 90, 0.12);
+        border: 1px solid rgba(184, 152, 81, 0.08);
     }
 
     @media (max-width: 768px) {
@@ -143,7 +141,7 @@
     }
 
     /* ==========================================================================
-       余白アニメ（Blur ＆ Letter-spacing）
+       フェードイン演出
        ========================================================================== */
     .fade-in {
         opacity: 0; 
@@ -162,22 +160,22 @@
     .keep-word { display: inline-block; }
 
     /* ==========================================================================
-       Hero領域（100dvh）
+       Hero領域 (image_2.pngのレイアウト構図)
        ========================================================================== */
     .hero {
         position: relative; width: 100%; 
         min-height: 100svh;
         height: 100dvh;
         display: flex; align-items: center; justify-content: center; overflow: hidden;
-        scroll-snap-align: start; 
     }
     .hero::after {
         content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to bottom, rgba(12,27,51,0.5) 0%, rgba(12,27,51,0.8) 100%); z-index: 1;
+        background: linear-gradient(to bottom, rgba(247, 246, 243, 0.1) 0%, rgba(247, 246, 243, 0.4) 100%); z-index: 1;
     }
     .hero-bg {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600'); 
+        /* image_2.pngの美しい光が差し込む外観をイメージした高解像度住宅画像 */
+        background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1600'); 
         background-size: cover; background-position: center;
         will-change: transform;
     }
@@ -185,9 +183,9 @@
         .hero-bg { height: 130%; } 
     }
     .hero-content {
-        position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 24px; margin-top: 40px;
+        position: relative; z-index: 2; text-align: center; color: var(--text-main); padding: 0 24px; margin-top: 40px;
     }
-    .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; }
     
     .char {
         display: inline-block;
@@ -202,18 +200,17 @@
         transform: translateY(0);
     }
     
-    .hero-sub { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.35em; opacity: 0.9; font-weight: 400; text-transform: uppercase; color: var(--accent); }
+    .hero-sub { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.35em; opacity: 0.8; font-weight: 400; text-transform: uppercase; color: var(--accent); }
     @media (min-width: 768px) {
         .hero-title { font-size: 2.4rem; line-height: 2.3; }
         .hero-sub { font-size: 0.9rem; }
     }
 
     /* ==========================================================================
-       セクション共通設計
+       セクション共通
        ========================================================================== */
     .content-section {
         position: relative; z-index: 1; padding: 90px 6%; max-width: 900px; margin: 0 auto;
-        scroll-snap-align: start; 
     }
     @media (min-width: 768px) {
         .content-section { padding: 160px 4%; }
@@ -234,7 +231,7 @@
     }
 
     /* ==========================================================================
-       事業内容に沿ったリンクグリッド
+       工事メニューリンクグリッド
        ========================================================================== */
     .link-grid {
         display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 35px;
@@ -246,7 +243,7 @@
         display: flex; justify-content: space-between; align-items: center;
         background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
         padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400;
-        box-shadow: 0 4px 20px rgba(12, 27, 51, 0.02);
+        box-shadow: 0 4px 20px rgba(12, 27, 51, 0.01);
         font-size: 0.95rem;
         transition: var(--transition-smooth);
     }
@@ -254,118 +251,124 @@
     
     @media (min-width: 768px) {
         .link-card { padding: 28px 24px; font-size: 1rem; }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(12, 27, 51, 0.06); }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(12, 27, 51, 0.04); }
         .link-card:hover .arrow { transform: translateX(6px); }
     }
 
     /* ==========================================================================
-       3つの「えん」
+       3つの「えん」レイアウト (image.pngを完全トレース)
        ========================================================================== */
-    .concept-grid {
-        display: grid; grid-template-columns: 1fr; gap: 45px; margin-top: 40px;
+    .concept-container {
+        display: flex; flex-direction: column; gap: 60px; margin-top: 50px;
     }
     @media (min-width: 768px) {
-        .concept-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+        .concept-container { gap: 80px; margin-top: 70px; }
     }
-    .concept-block { display: flex; flex-direction: column; }
+    
+    .concept-row {
+        display: flex; flex-direction: column; gap: 24px;
+    }
+    @media (min-width: 768px) {
+        .concept-row { flex-direction: row; align-items: center; gap: 60px; }
+    }
     
     .concept-image-wrapper { 
         width: 100%; 
-        height: 52vw; 
+        height: 55vw; 
         overflow: hidden; 
-        border-radius: 12px; 
-        margin-bottom: 20px; 
-        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.04); 
+        border-radius: 14px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
     }
     @media (min-width: 768px) {
-        .concept-image-wrapper { height: 220px; margin-bottom: 24px; }
+        .concept-image-wrapper { width: 45%; height: 260px; flex-shrink: 0; }
     }
     
     .concept-image {
         width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-premium);
     }
-    .concept-label { font-size: 1.05rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; letter-spacing: 0.05em; }
+    
+    .concept-content {
+        flex: 1;
+    }
+    
+    .concept-label { 
+        font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; letter-spacing: 0.05em; 
+        position: relative; display: inline-block;
+    }
+    .concept-label::after {
+        content: ''; display: block; width: 40px; height: 1px; background-color: var(--accent); margin-top: 8px;
+    }
+    
+    .concept-text {
+        font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; text-align: justify; font-weight: 300;
+    }
     @media (min-width: 768px) {
-        .concept-label { font-size: 1.15rem; margin-bottom: 20px; }
-        .concept-block:hover .concept-image { transform: scale(1.06); }
+        .concept-label { font-size: 1.45rem; margin-bottom: 22px; }
+        .concept-text { font-size: 1.05rem; line-height: 2.4; }
+        .concept-row:hover .concept-image { transform: scale(1.04); }
     }
 
     /* ==========================================================================
-       誓いセクション
+       未来の円・誓いセクション (image_2.pngのデザインと言葉を完全統合)
        ========================================================================== */
     .vow-flex { display: flex; flex-direction: column; gap: 35px; margin-top: 30px; }
     .vow-image {
         width: 100%; height: 55vw; border-radius: 12px;
-        background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000');
-        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(12, 27, 51, 0.06);
+        /* image_2.pngのような美しい外観をイメージした高解像度別アングル住宅写真 */
+        background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000');
+        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     }
     .vow-content { width: 100%; }
+    
     .story-highlight {
-        font-size: 1.15rem; color: var(--accent); font-weight: 500; margin: 35px 0 20px 0; line-height: 1.8; text-align: center;
+        font-size: 1.3rem; color: var(--text-main); font-weight: 500; margin: 35px 0 20px 0; line-height: 1.8; text-align: left; letter-spacing: 0.12em;
     }
     
     @media (min-width: 768px) {
         .vow-flex { flex-direction: row; gap: 60px; margin-top: 40px; }
-        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(12, 27, 51, 0.08); }
-        .vow-content { flex: 1; }
-        .story-highlight { font-size: 1.35rem; margin: 50px 0 20px 0; }
+        .vow-image { flex: 1.1; height: 460px; }
+        .vow-content { flex: 0.9; justify-content: center; display: flex; flex-direction: column; }
+        .story-highlight { font-size: 1.75rem; margin: 0 0 30px 0; line-height: 2.0; }
     }
 
     /* ==========================================================================
-       フッター ＆ モバイルフローティングナビ
+       フッター ＆ ナビゲーション
        ========================================================================== */
     #footer { 
         border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; 
         font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); position: relative; z-index: 2;
-        scroll-snap-align: end;
     }
     @media (min-width: 768px) { #footer { padding: 60px 4% 40px 4%; } }
 
     .mobile-nav { 
-        position: fixed; 
-        width: calc(100% - 24px);
-        left: 12px;
-        bottom: 12px;
-        height: 68px; 
-        background: rgba(255, 255, 255, 0.82); 
-        backdrop-filter: blur(18px); 
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(225, 231, 238, 0.8);
-        border-radius: 20px;
-        display: flex; 
-        padding: 6px;
-        z-index: 999; 
-        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.12);
+        position: fixed; width: calc(100% - 24px); left: 12px; bottom: 12px; height: 68px; 
+        background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(225, 231, 238, 0.8); border-radius: 20px; display: flex; padding: 6px; z-index: 999; 
+        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.08);
     }
     @media (min-width: 768px) { .mobile-nav { display: none; } }
     
     .mobile-nav-item { 
         flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; 
-        letter-spacing: 0.05em;
+        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
     }
     
     .mobile-nav-item.highlight { 
-        flex: 1.4;
-        background: linear-gradient(135deg, #0c1b33, #193156); 
-        color: var(--accent); 
-        border-radius: 15px;
-        font-size: 0.75rem;
-        box-shadow: 0 4px 15px rgba(12, 27, 51, 0.25);
-        transition: transform 0.2s ease;
+        flex: 1.4; background: linear-gradient(135deg, #b89851, #967a3b); color: #ffffff; 
+        border-radius: 15px; font-size: 0.75rem; box-shadow: 0 4px 15px rgba(184, 152, 81, 0.2); transition: transform 0.2s ease;
     }
-    .mobile-nav-item.highlight:active {
-        transform: scale(0.96); 
-    }
+    .mobile-nav-item.highlight:active { transform: scale(0.96); }
 </style>
 </head>
 <body>
 
+    <!-- 背景の幾何学デザイン線サークル -->
     <div class="bg-container">
         <div class="bg-circle circle-1" id="js-circle-1"></div>
         <div class="bg-circle circle-2" id="js-circle-2"></div>
     </div>
 
+    <!-- グローバルヘッダー -->
     <div id="header">
         <div class="header-inner">
             <div class="logo">
@@ -376,6 +379,7 @@
         </div>
     </div>
     
+    <!-- PC用ナビゲーション -->
     <div class="nav-pc" id="js-nav-pc">
         <ul>
             <li><a href="./index.html">ホーム</a></li>
@@ -383,6 +387,7 @@
         </ul>
     </div>
 
+    <!-- メインヒーロービジュアル (image_2.pngの美しい構図) -->
     <section class="hero">
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
@@ -394,6 +399,7 @@
         </div>
     </section>
 
+    <!-- 私たちの想い -->
     <section class="content-section fade-in" style="max-width: 750px;">
         <h2 class="section-title">私たちの想い</h2>
         <p class="story-text">
@@ -403,10 +409,11 @@
             <span class="keep-word">これまで家族が</span><span class="keep-word">帰ってきた日の記憶、</span><span class="keep-word">子どもたちが成長した</span><span class="keep-word">日々の足跡。</span><span class="keep-word">お家には目に見えない</span><span class="keep-word">大切な思い出が</span><span class="keep-word">刻まれています。</span>
         </p>
         <p class="story-text">
-            <span class="keep-word">私たちｃｉｒｃｌｅ</span><span class="keep-word">（サークル）は、</span><span class="keep-word">美しい外壁塗装・屋根塗装から、</span><span class="keep-word">雨漏りを防ぐ確かな防水、</span><span class="keep-word">お家の骨組みを支える建築工事、</span><span class="keep-word">そして街並みに調和する外構まで、</span><span class="keep-word">住まいのすべてをトータルで守ります。</span><span class="keep-word">古くなった場所に、</span><span class="keep-word">もう一度、新しい命を吹き込み、</span><span class="keep-word">次の世代へ繋いでいくこと。</span><span class="keep-word">それが私たちの使命です。</span>
+            <span class="keep-word">私たちｃｉｒｃｌｅ</span><span class="keep-word">（サークル）は、</span><span class="keep-word">美しい外壁塗装・屋根塗装から、</span><span class="keep-word">補修を伴う確かな防水、</span><span class="keep-word">お家の骨組みを支える建築工事、</span><span class="keep-word">そして街並みに調和する外構まで、</span><span class="keep-word">住まいのすべてをトータルで守ります。</span><span class="keep-word">古くなった場所に、</span><span class="keep-word">もう一度、新しい命を吹き込み、</span><span class="keep-word">次の世代へ繋いでいくこと。</span><span class="keep-word">それが私たちの使命です。</span>
         </p>
     </section>
 
+    <!-- 工事一覧メニュー（前回の導線グリッド） -->
     <section class="content-section fade-in">
         <h2 class="section-title">住まいのトータルリフォーム・工事一覧</h2>
         <p class="story-text" style="text-align: center; margin-bottom: 20px;">
@@ -414,78 +421,99 @@
         </p>
         
         <div class="link-grid">
-            <a href="./wall-status.html" class="link-card">住宅塗装・外壁塗り替え目安 <span class="arrow">→</span></a>
-            <a href="./roof-status.html" class="link-card">屋根塗装・補修のタイミング <span class="arrow">→</span></a>
-            <a href="./materials.html" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
-            <a href="./wall-process.html" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
-            <a href="./waterproof.html" class="link-card">住宅防水工事（雨漏り対策・防水全般） <span class="arrow">→</span></a>
-            <a href="./architecture.html" class="link-card">建築リフォーム・間取り変更工事（全般） <span class="arrow">→</span></a>
-            <a href="./sheetmetal-exterior.html" class="link-card">板金工事 ＆ 外構（エクステリア）工事 <span class="arrow">→</span></a>
+            <a href="#" class="link-card">住宅塗装・外壁塗り替え目安 <span class="arrow">→</span></a>
+            <a href="#" class="link-card">屋根塗装・補修 the タイミング <span class="arrow">→</span></a>
+            <a href="#" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
+            <a href="#" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
+            <a href="#" class="link-card">住宅防水工事（雨漏り対策・防水全般） <span class="arrow">→</span></a>
+            <a href="#" class="link-card">建築リフォーム・間取り変更工事（全般） <span class="arrow">→</span></a>
+            <a href="#" class="link-card">板金工事 ＆ 外構（エクステリア）工事 <span class="arrow">→</span></a>
         </div>
     </section>
 
+    <!-- 3つの「えん」セクション（image.pngの完璧な再現） -->
     <section class="content-section fade-in">
         <h2 class="section-title">すべては、円のように繋がっている</h2>
         
-        <div class="concept-grid">
-            <div class="concept-block">
+        <div class="concept-container">
+            <!-- 1つめの円：住まいの再生の円 -->
+            <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1578308304918-12964e52516a?auto=format&fit=crop&q=80&w=600" alt="人と人との縁" class="concept-image">
+                    <!-- 職人が外壁にブラシ・ローラーを当てているイメージ -->
+                    <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=600" alt="住まいの再生の円" class="concept-image">
                 </div>
-                <h3 class="concept-label">● ひとつめは、人と人との「縁」</h3>
-                <p class="story-text">
-                    効率重視の付き合いではなく、信州の街で出会えたお一人おひとりの声にじっくり耳を傾け、お茶を飲みながら「これからの暮らしの困りごと」を建築のプロとして一緒に解決していける温かい繋がりを何より大切にします。
-                </p>
+                <div class="concept-content">
+                    <h3 class="concept-label">住まいの再生の円</h3>
+                    <p class="concept-text">
+                        傷んだ場所を優しく労わり、<br>
+                        次の10年、20年へと心地よく循環していく<br>
+                        ための『再生』をお届けします。
+                    </p>
+                </div>
             </div>
 
-            <div class="concept-block">
+            <!-- 2つめの円：笑顔の円 -->
+            <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1613977505695-1f951e7a83d7?auto=format&fit=crop&q=80&w=600" alt="住まいの再生の円" class="concept-image">
+                    <!-- 施主様（家族）とスタッフが笑顔で握手をしているイメージ -->
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=600" alt="笑顔の円" class="concept-image">
                 </div>
-                <h3 class="concept-label">● ふたつめは、住まいの「再生の円」</h3>
-                <p class="story-text">
-                    塗装、防水、板金、そして大工仕事まで。傷んだ場所をトータルで優しく労わり、お家の外も中も次の10年、20年へと心地よく循環していくための確かな『再生』をお届けします。
-                </p>
+                <div class="concept-content">
+                    <h3 class="concept-label">笑顔の円</h3>
+                    <p class="concept-text">
+                        ひとつの良い仕事が、施主様の笑顔になり、<br>
+                        それがご近所様の笑顔になり、<br>
+                        地域へと広がっていく。<br>
+                        円を描くようにみんなの幸せが繋がって<br>
+                        いくことが、私たちの理想です。
+                    </p>
+                </div>
             </div>
 
-            <div class="concept-block">
+            <!-- 3つめの円：住まいの未来の円 -->
+            <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1542640244-7e672d6cb461?auto=format&fit=crop&q=80&w=600" alt="笑顔の円" class="concept-image">
+                    <!-- 美しいモダン住宅の外観と植栽イメージ -->
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=600" alt="住まいの未来の円" class="concept-image">
                 </div>
-                <h3 class="concept-label">● みっつめは、笑顔の「円」</h3>
-                <p class="story-text">
-                    ひとつの丁寧なリフォーム仕事が、施主様の笑顔になり、それがご近所様の笑顔になり、地域へと広がっていく。円を描くようにみんなの幸せが繋がっていくことが、私たちの理想です。
-                </p>
+                <div class="concept-content">
+                    <h3 class="concept-label">住まいの未来の円</h3>
+                    <p class="concept-text">
+                        目に見える美しさだけでなく、住まいの<br>
+                        安心と快適が、未来へと続いていく。<br>
+                        その未来まで支えることが、私たちの使命です。
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- 誓い・ラストメッセージセクション（image_2.pngのデザインと言葉） -->
     <section class="content-section fade-in" style="max-width: 1000px;">
-        <h2 class="section-title">住まいに関わる全ての仕事に、まっすぐな手仕事を</h2>
+        <h2 class="section-title">住まいの未来を、共に描く。</h2>
         <div class="vow-flex">
             <div class="vow-image"></div>
             <div class="vow-content">
+                <h3 class="story-highlight">
+                    住まいの未来を、<br>共に描く。
+                </h3>
                 <p class="story-text">
-                    どれだけ時代が進んでも、人の温もりが宿る住まいは、人の「手」でしか守れないと私たちは信じています。
+                    目に見える美しさだけでなく、住まいの安心と快適が、未来へと続いていく。その未来まで支えることが、私たちの使命です。
                 </p>
-                <p class="story-text">
-                    塗装の一刷毛、防水の1ミリ、板金の収まり、見えなくなってしまう下地の補修から最後の仕上げまで。嘘のない、実直な手仕事を大切に、私たちは今日も、あなたの大切な我が家と誠実に向き合います。
-                </p>
-                <p class="story-highlight">
-                    「ｃｉｒｃｌｅさんに任せて、本当によかった。」
-                </p>
-                <p class="story-text" style="margin-top: 15px; text-align: center;">
-                    10年先も、我が家を見上げるたびに微笑んでいただけるように。
+                <p class="story-text" style="margin-top: 20px;">
+                    どれだけ時代が進んでも、人の温もりが宿る住まいは、人の「手」でしか守れないと私たちは信じています。塗装の一刷毛、防水の1ミリ、大工の手仕事から最後の仕上げまで。株式会社ｃｉｒｃｌｅは、あなたの大切な我が家と誠実に向き合い続けます。
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- フッター -->
     <div id="footer">
-        Copyright (C) kensetumap.com All Rights Reserved.<br>
-        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
+        Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.<br>
+        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.6; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
     </div>
 
+    <!-- スマホ専用固定ボトムナビ -->
     <div class="mobile-nav">
         <a href="./index.html" class="mobile-nav-item">ホーム</a>
         <a href="./profile.html" class="mobile-nav-item">会社概要</a>
@@ -495,9 +523,7 @@
 <script>
     const isMobile = window.innerWidth < 768;
 
-    /**
-     * 1. 慣性スクロール（Lenis）
-     */
+    // 1. 高級感あふれる慣性スムーススクロールの制御
     class SmoothScrollManager {
         constructor() {
             this.lenis = new Lenis({
@@ -518,9 +544,7 @@
         }
     }
 
-    /**
-     * 2. スクロール連動フェードイン
-     */
+    // 2. スクロールに応じた美しくシームレスなフェードイン（Reveal効果）
     class RevealController {
         constructor() {
             this.elements = document.querySelectorAll('.fade-in');
@@ -543,9 +567,7 @@
         }
     }
 
-    /**
-     * 3. インタラクション・スクロールエフェクト
-     */
+    // 3. インタラクティブ演出（ヘッダー連動、幾何学背景パララックス、Hero視差効果）
     class DynamicInteractionManager {
         constructor() {
             this.header = document.getElementById('header');
@@ -559,6 +581,7 @@
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
                 
+                // ヘッダー切り替え
                 if (scrolled > 50) {
                     this.header.classList.add('scrolled');
                     if(this.navPc) this.navPc.classList.add('scrolled');
@@ -567,17 +590,20 @@
                     if(this.navPc) this.navPc.classList.remove('scrolled');
                 }
 
+                // 幾何学円のスクロールパララックス
                 const moveY = scrolled * 0.12; 
                 if (this.c1 && this.c2) {
                     this.c1.style.transform = `translateY(${moveY}px)`;
                     this.c2.style.transform = `translateY(${-moveY * 0.7}px)`;
                 }
 
+                // PC用：ヒーロー画像の優雅なパララックス視差
                 if (!isMobile && this.heroBg) {
                     this.heroBg.style.transform = `translateY(${scrolled * 0.35}px)`;
                 }
             });
 
+            // PC用：マウスの動きに連動するサークルのわずかな追従効果
             if (!isMobile) {
                 document.addEventListener("mousemove", (e) => {
                     const x = (e.clientX / window.innerWidth - 0.5) * 40; 
@@ -590,28 +616,10 @@
                     }
                 });
             }
-
-            if (isMobile) {
-                document.addEventListener("touchmove", (e) => {
-                    if (e.touches.length > 0) {
-                        const touch = e.touches[0];
-                        const x = (touch.clientX / window.innerWidth - 0.5) * 25; 
-                        const y = (touch.clientY / window.innerHeight - 0.5) * 25;
-                        const scrolled = window.pageYOffset * 0.12;
-
-                        if (this.c1 && this.c2) {
-                            this.c1.style.transform = `translate(${x}px, ${y + scrolled}px)`;
-                            this.c2.style.transform = `translate(${-x}px, ${-y - (scrolled * 0.7)}px)`;
-                        }
-                    }
-                }, { passive: true });
-            }
         }
     }
 
-    /**
-     * 4. Heroタイトルの1文字ずつフェードイン
-     */
+    // 4. タイポグラフィ・シネマティック文字アニメーション（一文字ずつなめらかに浮かぶ）
     class TypographyAnimator {
         constructor() {
             this.titleContainer = document.getElementById('js-hero-title');
@@ -658,6 +666,7 @@
         }
     }
 
+    // 各制御の着火
     document.addEventListener("DOMContentLoaded", () => {
         new SmoothScrollManager();
         new RevealController();
