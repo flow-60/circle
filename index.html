@@ -6,24 +6,26 @@
 <title>株式会社circle | 信州の暮らしをトータルで支える総合建築・リフォーム・外壁塗装</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+<!-- スムーススクロール用ライブラリ -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
 <style>
     /* ==========================================================================
-       デザインシステム ＆ 変数定義（プレミアムネイビー＆ゴールド）
+       デザインシステム ＆ 変数定義
        ========================================================================== */
     :root {
-        --bg-base: #f7f6f3;         /* 上質な生成り・アースカラー */
-        --bg-card: #ffffff;         
-        --text-main: #2b2b2b;       
-        --text-sub: #4a4a4a;        
+        --bg-base: #f7f6f3;
+        --bg-card: #ffffff;
+        --text-main: #2b2b2b;
+        --text-sub: #4a4a4a;
         --text-muted: #8c8c8c;
-        --accent: #b89851;          /* 落ち着いたゴールド */
-        --accent-light: #fdfbf7;    
+        --accent: #b89851;
+        --accent-light: #fdfbf7;
         --border: #e6e4e0;
         
         --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
@@ -35,10 +37,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html { 
-        overflow-x: hidden; 
-        scroll-behavior: initial;
-    }
+    html { overflow-x: hidden; scroll-behavior: initial; }
 
     body { 
         font-family: var(--font-serif); 
@@ -60,7 +59,7 @@
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー
+       ヘッダー（ロゴサイズ調整）
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
@@ -73,37 +72,36 @@
     #header.scrolled {
         background: rgba(247, 246, 243, 0.88); 
         backdrop-filter: blur(18px); 
-        -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
         padding: 10px 6%;
     }
     
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     
-    .logo { display: flex; align-items: center; }
     .logo a { display: block; line-height: 0; }
     .logo img {
-        height: 38px; 
+        height: 44px; /* ロゴサイズを少し拡大 */
         width: auto;
         object-fit: contain;
         transition: height 0.4s var(--ease-premium);
     }
     
     #header.scrolled .logo img { 
-        height: 32px; 
+        height: 38px; /* スクロール時も少し拡大 */
     }
     
     @media (min-width: 768px) {
         #header { padding: 24px 6%; }
         #header.scrolled { padding: 14px 6%; }
-        .logo img { height: 48px; }
-        #header.scrolled .logo img { height: 44px; }
+        .logo img { height: 54px; }
+        #header.scrolled .logo img { height: 48px; }
     }
     
+    /* ナビゲーションPC版 */
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
-        .nav-pc { display: block; position: fixed; top: 85px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
-        .nav-pc.scrolled { top: 68px; background: rgba(247, 246, 243, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc { display: block; position: fixed; top: 95px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
+        .nav-pc.scrolled { top: 78px; background: rgba(247, 246, 243, 0.82); backdrop-filter: blur(18px); }
         .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid transparent; } 
         .nav-pc.scrolled ul { border-bottom: 1px solid var(--border); }
         .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(43,43,43,0.8); } 
@@ -112,249 +110,87 @@
     }
 
     /* ==========================================================================
-       デザイン用：細線幾何学サークル
+       装飾要素
        ========================================================================== */
-    .bg-container {
-        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-        pointer-events: none; z-index: 0; overflow: hidden;
-    }
-    .bg-circle {
-        position: absolute;
-        border-radius: 50%;
-        will-change: transform;
-        transition: transform 1.4s cubic-bezier(0.1, 0.8, 0.2, 1);
-    }
-    .circle-1 { 
-        width: 75vw; height: 75vw; top: -10vh; left: -15vw; 
-        border: 1px solid rgba(184, 152, 81, 0.08);
-    }
-    .circle-2 { 
-        width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; 
-        border: 1px solid rgba(184, 152, 81, 0.08);
-    }
+    .bg-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; overflow: hidden; }
+    .bg-circle { position: absolute; border-radius: 50%; will-change: transform; transition: transform 1.4s cubic-bezier(0.1, 0.8, 0.2, 1); }
+    .circle-1 { width: 75vw; height: 75vw; top: -10vh; left: -15vw; border: 1px solid rgba(184, 152, 81, 0.08); }
+    .circle-2 { width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; border: 1px solid rgba(184, 152, 81, 0.08); }
 
-    @media (max-width: 768px) {
-        .circle-1 { width: 90vw; height: 90vw; top: -5vh; left: -25vw; }
-        .circle-2 { width: 80vw; height: 80vw; bottom: 5vh; right: -25vw; }
-    }
-
-    /* ==========================================================================
-       フェードイン演出
-       ========================================================================== */
-    .fade-in {
-        opacity: 0; 
-        filter: blur(12px);
-        letter-spacing: 0.22em;
-        transition: var(--transition-smooth);
-    }
-    .fade-in.active { 
-        opacity: 1; 
-        filter: blur(0);
-        letter-spacing: 0.08em; 
-    }
-    @media (min-width: 768px) {
-        .fade-in.active { letter-spacing: 0.1em; }
-    }
+    .fade-in { opacity: 0; filter: blur(12px); transition: var(--transition-smooth); }
+    .fade-in.active { opacity: 1; filter: blur(0); }
     .keep-word { display: inline-block; }
 
     /* ==========================================================================
-       Hero領域
+       Hero
        ========================================================================== */
-    .hero {
-        position: relative; width: 100%; 
-        min-height: 100svh;
-        height: 100dvh;
-        display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
-    .hero::after {
-        content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to bottom, rgba(247, 246, 243, 0.1) 0%, rgba(247, 246, 243, 0.4) 100%); z-index: 1;
-    }
-    .hero-bg {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        /* ご指定のメイン画像を設定 */
-        background-image: url('images/toppage.png'); 
-        background-size: cover; background-position: center;
-        will-change: transform;
-    }
-    @media (min-width: 768px) {
-        .hero-bg { height: 130%; } 
-    }
-    .hero-content {
-        position: relative; z-index: 2; text-align: center; color: var(--text-main); padding: 0 24px; margin-top: 40px;
-    }
+    .hero { position: relative; width: 100%; min-height: 100svh; height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('images/toppage.png'); background-size: cover; background-position: center; }
+    .hero-content { position: relative; z-index: 2; text-align: center; color: var(--text-main); padding: 0 24px; margin-top: 40px; }
     .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; }
+    .char { display: inline-block; opacity: 0; filter: blur(6px); transform: translateY(10px); transition: opacity 0.8s var(--ease-premium), filter 0.8s var(--ease-premium), transform 0.8s var(--ease-premium); }
+    .char.animate { opacity: 1; filter: blur(0); transform: translateY(0); }
     
-    .char {
-        display: inline-block;
-        opacity: 0;
-        filter: blur(6px);
-        transform: translateY(10px);
-        transition: opacity 0.8s var(--ease-premium), filter 0.8s var(--ease-premium), transform 0.8s var(--ease-premium);
-    }
-    .char.animate {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-    }
-    
-    .hero-sub { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.35em; opacity: 0.8; font-weight: 400; text-transform: uppercase; color: var(--accent); }
     @media (min-width: 768px) {
         .hero-title { font-size: 2.4rem; line-height: 2.3; }
-        .hero-sub { font-size: 0.9rem; }
     }
 
     /* ==========================================================================
-       セクション共通
+       コンテンツ共通
        ========================================================================== */
-    .content-section {
-        position: relative; z-index: 1; padding: 90px 6%; max-width: 900px; margin: 0 auto;
-    }
+    .content-section { position: relative; z-index: 1; padding: 90px 6%; max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: 1.35rem; font-weight: 400; color: var(--accent); margin-bottom: 40px; text-align: center; letter-spacing: 0.15em; }
+    .section-title::after { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: var(--accent); margin: 20px auto 0; }
+    .story-text { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 28px; text-align: justify; font-weight: 300; }
+    
     @media (min-width: 768px) {
         .content-section { padding: 160px 4%; }
-    }
-    .section-title {
-        font-size: 1.35rem; font-weight: 400; color: var(--accent); margin-bottom: 40px;
-        text-align: center; letter-spacing: 0.15em;
-    }
-    .section-title::after {
-        content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: var(--accent); margin: 20px auto 0;
-    }
-    .story-text {
-        font-size: 0.95rem; color: var(--text-sub); margin-bottom: 28px; text-align: justify; font-weight: 300;
-    }
-    @media (min-width: 768px) {
-        .section-title { font-size: 1.6rem; margin-bottom: 60px; }
-        .story-text { font-size: 1rem; margin-bottom: 35px; }
+        .section-title { font-size: 1.6rem; }
     }
 
     /* ==========================================================================
-       工事メニューリンクグリッド
+       リンクグリッド
        ========================================================================== */
-    .link-grid {
-        display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 35px;
-    }
-    @media (min-width: 768px) {
-        .link-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; }
-    }
-    .link-card {
-        display: flex; justify-content: space-between; align-items: center;
-        background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-        padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400;
-        box-shadow: 0 4px 20px rgba(12, 27, 51, 0.01);
-        font-size: 0.95rem;
-        transition: var(--transition-smooth);
-    }
-    .link-card .arrow { color: var(--accent); font-family: var(--font-sans); transition: transform 0.4s var(--ease-premium); }
-    
-    @media (min-width: 768px) {
-        .link-card { padding: 28px 24px; font-size: 1rem; }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(12, 27, 51, 0.04); }
-        .link-card:hover .arrow { transform: translateX(6px); }
-    }
+    .link-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 35px; }
+    @media (min-width: 768px) { .link-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 50px; } }
+    .link-card { display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400; box-shadow: 0 4px 20px rgba(12, 27, 51, 0.01); font-size: 0.95rem; transition: var(--transition-smooth); }
+    .link-card .arrow { color: var(--accent); }
 
     /* ==========================================================================
-       3つの「えん」レイアウト
+       3つの「えん」セクション（横長調整）
        ========================================================================== */
-    .concept-container {
-        display: flex; flex-direction: column; gap: 60px; margin-top: 50px;
-    }
-    @media (min-width: 768px) {
-        .concept-container { gap: 80px; margin-top: 70px; }
-    }
+    .concept-container { display: flex; flex-direction: column; gap: 60px; margin-top: 50px; }
     
-    .concept-row {
-        display: flex; flex-direction: column; gap: 24px;
-    }
-    @media (min-width: 768px) {
-        .concept-row { flex-direction: row; align-items: center; gap: 60px; }
-    }
+    .concept-row { display: flex; flex-direction: column; gap: 24px; }
     
+    /* 横長にするための調整 */
     .concept-image-wrapper { 
         width: 100%; 
-        height: 55vw; 
+        aspect-ratio: 21 / 9; /* 横長比率に変更 */
         overflow: hidden; 
         border-radius: 14px; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
     }
+    
+    .concept-image { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-premium); }
+    
+    .concept-label { font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; }
+    .concept-label::after { content: ''; display: block; width: 40px; height: 1px; background-color: var(--accent); margin-top: 8px; }
+    .concept-text { font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; text-align: justify; }
+
     @media (min-width: 768px) {
-        .concept-image-wrapper { width: 45%; height: 260px; flex-shrink: 0; }
-    }
-    
-    .concept-image {
-        width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease-premium);
-    }
-    
-    .concept-content {
-        flex: 1;
-    }
-    
-    .concept-label { 
-        font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-bottom: 16px; letter-spacing: 0.05em; 
-        position: relative; display: inline-block;
-    }
-    .concept-label::after {
-        content: ''; display: block; width: 40px; height: 1px; background-color: var(--accent); margin-top: 8px;
-    }
-    
-    .concept-text {
-        font-size: 0.95rem; color: var(--text-sub); line-height: 2.2; text-align: justify; font-weight: 300;
-    }
-    @media (min-width: 768px) {
-        .concept-label { font-size: 1.45rem; margin-bottom: 22px; }
-        .concept-text { font-size: 1.05rem; line-height: 2.4; }
-        .concept-row:hover .concept-image { transform: scale(1.04); }
+        .concept-row { flex-direction: row; align-items: center; gap: 60px; }
+        .concept-image-wrapper { width: 50%; aspect-ratio: 16 / 9; flex-shrink: 0; } /* デスクトップでもワイドに */
+        .concept-label { font-size: 1.45rem; }
     }
 
     /* ==========================================================================
-       未来の円・誓いセクション
+       フッター
        ========================================================================== */
-    .vow-flex { display: flex; flex-direction: column; gap: 35px; margin-top: 30px; }
-    .vow-image {
-        width: 100%; height: 55vw; border-radius: 12px;
-        background-image: url('images/mirai_en.png');
-        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-    }
-    .vow-content { width: 100%; }
-    
-    .story-highlight {
-        font-size: 1.3rem; color: var(--text-main); font-weight: 500; margin: 35px 0 20px 0; line-height: 1.8; text-align: left; letter-spacing: 0.12em;
-    }
-    
-    @media (min-width: 768px) {
-        .vow-flex { flex-direction: row; gap: 60px; margin-top: 40px; }
-        .vow-image { flex: 1.1; height: 460px; }
-        .vow-content { flex: 0.9; justify-content: center; display: flex; flex-direction: column; }
-        .story-highlight { font-size: 1.75rem; margin: 0 0 30px 0; line-height: 2.0; }
-    }
-
-    /* ==========================================================================
-       フッター ＆ ナビゲーション
-       ========================================================================== */
-    #footer { 
-        border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; 
-        font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); position: relative; z-index: 2;
-    }
-    @media (min-width: 768px) { #footer { padding: 60px 4% 40px 4%; } }
-
-    .mobile-nav { 
-        position: fixed; width: calc(100% - 24px); left: 12px; bottom: 12px; height: 68px; 
-        background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(225, 231, 238, 0.8); border-radius: 20px; display: flex; padding: 6px; z-index: 999; 
-        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.08);
-    }
-    @media (min-width: 768px) { .mobile-nav { display: none; } }
-    
-    .mobile-nav-item { 
-        flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
-    }
-    
-    .mobile-nav-item.highlight { 
-        flex: 1.4; background: linear-gradient(135deg, #b89851, #967a3b); color: #ffffff; 
-        border-radius: 15px; font-size: 0.75rem; box-shadow: 0 4px 15px rgba(184, 152, 81, 0.2); transition: transform 0.2s ease;
-    }
-    .mobile-nav-item.highlight:active { transform: scale(0.96); }
+    #footer { border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); }
+    .mobile-nav { position: fixed; width: calc(100% - 24px); left: 12px; bottom: 12px; height: 68px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(18px); border: 1px solid rgba(225, 231, 238, 0.8); border-radius: 20px; display: flex; padding: 6px; z-index: 999; }
+    .mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-sub); font-size: 0.65rem; font-weight: 600; }
+    .mobile-nav-item.highlight { flex: 1.4; background: linear-gradient(135deg, #b89851, #967a3b); color: #ffffff; border-radius: 15px; }
 </style>
 </head>
 <body>
@@ -388,7 +224,6 @@
                 <span class="keep-word">この街で出会えた</span><span class="keep-word">「縁」とともに。</span><br>
                 <span class="keep-word">住まいが蘇る、</span><span class="keep-word">次の「円」へ。</span>
             </h1>
-            <p class="hero-sub">つなぐ、支える、共に未来へ。｜株式会社ｃｉｒｃｌｅ</p>
         </div>
     </section>
 
@@ -400,29 +235,19 @@
         <p class="story-text">
             <span class="keep-word">これまで家族が</span><span class="keep-word">帰ってきた日の記憶、</span><span class="keep-word">子どもたちが成長した</span><span class="keep-word">日々の足跡。</span><span class="keep-word">お家には目に見えない</span><span class="keep-word">大切な思い出が</span><span class="keep-word">刻まれています。</span>
         </p>
-        <p class="story-text">
-            <span class="keep-word">私たちｃｉｒｃｌｅ</span><span class="keep-word">（サークル）は、</span><span class="keep-word">美しい外壁塗装・屋根塗装から、</span><span class="keep-word">補修を伴う確かな防水、</span><span class="keep-word">お家の骨組みを支える建築工事、</span><span class="keep-word">そして街並みに調和する外構まで、</span><span class="keep-word">住まいのすべてをトータルで守ります。</span><span class="keep-word">古くなった場所に、</span><span class="keep-word">もう一度、新しい命を吹き込み、</span><span class="keep-word">次の世代へ繋いでいくこと。</span><span class="keep-word">それが私たちの使命です。</span>
-        </p>
     </section>
 
     <section class="content-section fade-in">
         <h2 class="section-title">住まいのトータルリフォーム・工事一覧</h2>
-        <p class="story-text" style="text-align: center; margin-bottom: 20px;">
-            信州のきびしい気候から大切なお家を丸ごと守る、私たちの実直な仕事をご紹介します。
-        </p>
-        
         <div class="link-grid">
             <a href="./wall-status.html" class="link-card">住宅塗装・外壁の塗り替え目安 <span class="arrow">→</span></a>
             <a href="./roof-status.html" class="link-card">屋根塗装・補修のタイミング <span class="arrow">→</span></a>
             <a href="./materials.html" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
             <a href="./wall-process.html" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
-            <a href="#" class="link-card">住宅防水工事（雨漏り対策・防水全般） <span class="arrow">→</span></a>
-            <a href="#" class="link-card">建築リフォーム・間取り変更工事（全般） <span class="arrow">→</span></a>
-            <a href="#" class="link-card">板金工事 ＆ 外構（エクステリア）工事 <span class="arrow">→</span></a>
         </div>
     </section>
 
-<section class="content-section fade-in">
+    <section class="content-section fade-in">
         <h2 class="section-title">すべては、円のように繋がっている</h2>
         
         <div class="concept-container">
@@ -432,11 +257,7 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの再生の円</h3>
-                    <p class="concept-text">
-                        傷んだ場所を優しく労わり、<br>
-                        次の10年、20年へと心地よく循環していく<br>
-                        ための『再生』をお届けします。
-                    </p>
+                    <p class="concept-text">傷んだ場所を優しく労わり、次の10年、20年へと心地よく循環していくための『再生』をお届けします。</p>
                 </div>
             </div>
 
@@ -446,13 +267,7 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">笑顔の円</h3>
-                    <p class="concept-text">
-                        ひとつの良い仕事が、施主様の笑顔になり、<br>
-                        それがご近所様の笑顔になり、<br>
-                        地域へと広がっていく。<br>
-                        円を描くようにみんなの幸せが繋がって<br>
-                        いくことが、私たちの理想です。
-                    </p>
+                    <p class="concept-text">ひとつの良い仕事が、施主様の笑顔になり、それがご近所様の笑顔になり、地域へと広がっていく。円を描くようにみんなの幸せが繋がっていくことが、私たちの理想です。</p>
                 </div>
             </div>
 
@@ -462,197 +277,36 @@
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの未来の円</h3>
-                    <p class="concept-text">
-                        目に見える美しさだけでなく、住まいの<br>
-                        安心と快適が、未来へと続いていく。<br>
-                        その未来まで支えることが、私たちの使命です。
-                    </p>
+                    <p class="concept-text">目に見える美しさだけでなく、住まいの安心と快適が、未来へと続いていく。その未来まで支えることが、私たちの使命です。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="content-section fade-in" style="max-width: 1000px;">
-        <h2 class="section-title">住まいの未来を、共に描く。</h2>
-        <div class="vow-flex">
-            <div class="vow-image"></div>
-            <div class="vow-content">
-                <h3 class="story-highlight">
-                    住まいの未来を、<br>共に描く。
-                </h3>
-                <p class="story-text">
-                    目に見える美しさだけでなく、住まいの安心と快適が、未来へと続いていく。その未来まで支えることが、私たちの使命です。
-                </p>
-                <p class="story-text" style="margin-top: 20px;">
-                    どれだけ時代が進んでも、人の温もりが宿る住まいは、人の「手」でしか守れないと私たちは信じています。塗装の一刷毛、防水の1ミリ、大工の手仕事から最後の仕上げまで。株式会社ｃｉｒｃｌｅは、あなたの大切な我が家と誠実に向き合い続けます。
-                </p>
-            </div>
-        </div>
-    </section>
-
     <div id="footer">
-        Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.<br>
-        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.6; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
+        Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.
     </div>
 
     <div class="mobile-nav">
         <a href="./index.html" class="mobile-nav-item">ホーム</a>
         <a href="./profile.html" class="mobile-nav-item">会社概要</a>
-        <a href="tel:09034081379" class="mobile-nav-item highlight">無料相談はこちら</a>
+        <a href="tel:09034081379" class="mobile-nav-item highlight">無料相談</a>
     </div>
 
 <script>
     const isMobile = window.innerWidth < 768;
-
-    // 1. 高級感あふれる慣性スムーススクロールの制御
-    class SmoothScrollManager {
-        constructor() {
-            this.lenis = new Lenis({
-                duration: isMobile ? 1.0 : 1.2, 
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                orientation: 'vertical',
-                gestureOrientation: 'vertical',
-                smoothWheel: true
-            });
-            this.init();
+    // スクロール時のヘッダー制御
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const header = document.getElementById('header');
+        const navPc = document.getElementById('js-nav-pc');
+        if (scrolled > 50) {
+            header.classList.add('scrolled');
+            if(navPc) navPc.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+            if(navPc) navPc.classList.remove('scrolled');
         }
-        init() {
-            const raf = (time) => {
-                this.lenis.raf(time);
-                requestAnimationFrame(raf);
-            };
-            requestAnimationFrame(raf);
-        }
-    }
-
-    // 2. スクロールに応じた美しくシームレスなフェードイン
-    class RevealController {
-        constructor() {
-            this.elements = document.querySelectorAll('.fade-in');
-            this.options = { 
-                threshold: 0.05, 
-                rootMargin: isMobile ? "0px 0px -20px 0px" : "0px 0px -80px 0px" 
-            };
-            this.init();
-        }
-        init() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, this.options);
-            this.elements.forEach(el => observer.observe(el));
-        }
-    }
-
-    // 3. インタラクティブ演出（ヘッダー連動、幾何学背景パララックス、Hero視差効果）
-    class DynamicInteractionManager {
-        constructor() {
-            this.header = document.getElementById('header');
-            this.navPc = document.getElementById('js-nav-pc');
-            this.heroBg = document.getElementById('heroBg');
-            this.c1 = document.getElementById("js-circle-1");
-            this.c2 = document.getElementById("js-circle-2");
-            this.init();
-        }
-        init() {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                
-                // ヘッダー切り替え
-                if (scrolled > 50) {
-                    this.header.classList.add('scrolled');
-                    if(this.navPc) this.navPc.classList.add('scrolled');
-                } else {
-                    this.header.classList.remove('scrolled');
-                    if(this.navPc) this.navPc.classList.remove('scrolled');
-                }
-
-                // 幾何学円のスクロールパララックス
-                const moveY = scrolled * 0.12; 
-                if (this.c1 && this.c2) {
-                    this.c1.style.transform = `translateY(${moveY}px)`;
-                    this.c2.style.transform = `translateY(${-moveY * 0.7}px)`;
-                }
-
-                // PC用：ヒーロー画像の優雅なパララックス視差
-                if (!isMobile && this.heroBg) {
-                    this.heroBg.style.transform = `translateY(${scrolled * 0.35}px)`;
-                }
-            });
-
-            // PC用：マウスの動きに連動するサークルのわずかな追従効果
-            if (!isMobile) {
-                document.addEventListener("mousemove", (e) => {
-                    const x = (e.clientX / window.innerWidth - 0.5) * 40; 
-                    const y = (e.clientY / window.innerHeight - 0.5) * 40;
-                    const scrolled = window.pageYOffset * 0.12;
-                    
-                    if (this.c1 && this.c2) {
-                        this.c1.style.transform = `translate(${x}px, ${y + scrolled}px)`;
-                        this.c2.style.transform = `translate(${-x}px, ${-y - (scrolled * 0.7)}px)`;
-                    }
-                });
-            }
-        }
-    }
-
-    // 4. タイポグラフィ・シネマティック文字アニメーション
-    class TypographyAnimator {
-        constructor() {
-            this.titleContainer = document.getElementById('js-hero-title');
-            this.init();
-        }
-        init() {
-            if (!this.titleContainer) return;
-            
-            const text = this.titleContainer.innerHTML;
-            const regex = /(\s*<[^>]*>.*?<\/[^>]*>\s*|<br>|.)/g;
-            const matches = text.match(regex);
-            
-            let newHTML = '';
-            let delayIndex = 0;
-
-            matches.forEach((chunk) => {
-                if (chunk === '<br>') {
-                    newHTML += '<br>';
-                } else if (chunk.startsWith('<span')) {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(chunk, 'text/html');
-                    const spanText = doc.body.textContent;
-                    const className = doc.body.querySelector('span').className;
-                    
-                    let spanInner = `<span class="${className}">`;
-                    for (let char of spanText) {
-                        spanInner += `<span class="char" style="transition-delay: ${delayIndex * 0.04}s">${char}</span>`;
-                        delayIndex++;
-                    }
-                    spanInner += '</span>';
-                    newHTML += spanInner;
-                } else {
-                    newHTML += `<span class="char" style="transition-delay: ${delayIndex * 0.04}s">${chunk}</span>`;
-                    delayIndex++;
-                }
-            });
-
-            this.titleContainer.innerHTML = newHTML;
-
-            setTimeout(() => {
-                const chars = this.titleContainer.querySelectorAll('.char');
-                chars.forEach(char => char.classList.add('animate'));
-            }, 300);
-        }
-    }
-
-    // 各制御の着火
-    document.addEventListener("DOMContentLoaded", () => {
-        new SmoothScrollManager();
-        new RevealController();
-        new DynamicInteractionManager();
-        new TypographyAnimator();
     });
 </script>
 </body>
