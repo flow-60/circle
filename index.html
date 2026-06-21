@@ -14,17 +14,17 @@
 
 <style>
     /* ==========================================================================
-       デザインシステム ＆ 変数定義
+       デザインシステム ＆ 変数定義（ロゴのネイビー＆ゴールドへ最適化）
        ========================================================================== */
     :root {
-        --bg-base: #faf8f5; 
-        --bg-card: #ffffff; 
-        --text-main: #2d2621; 
-        --text-sub: #5c524a; 
-        --text-muted: #a1958d;
-        --accent: #8c6e51; 
-        --accent-light: #f5ede4; 
-        --border: #ede6df;
+        --bg-base: #f4f6f9;         /* 透明感のあるプレーンな背景 */
+        --bg-card: #ffffff;         
+        --text-main: #0f1a2c;       /* ロゴに合わせた深いネイビー */
+        --text-sub: #3a495e;        
+        --text-muted: #8492a6;
+        --accent: #c5a059;          /* ロゴに調和する上品なゴールド */
+        --accent-light: #f7f3eb;    
+        --border: #e2e8f0;
         
         --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
         --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
@@ -62,63 +62,62 @@
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー（【修正】スマホスクロール時の縦幅を2/3に極薄化）
+       ヘッダー（ロゴ画像表示・スクロール時変化）
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
         background: transparent;
         border-bottom: 1px solid transparent; 
-        padding: 16px 6%; /* 初期状態のパディング（少しゆったり） */
+        padding: 20px 6%;
         transition: padding 0.4s var(--ease-premium), background 0.5s var(--ease-premium), border-color 0.5s var(--ease-premium), backdrop-filter 0.5s var(--ease-premium);
     }
     
-    /* スマホでスクロールした瞬間に発火するスタイル */
     #header.scrolled {
-        background: rgba(250, 248, 245, 0.85); 
+        background: rgba(244, 246, 249, 0.85); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
-        padding: 10px 6%; /* 【修正】従来の2/3程度の細さにし、画面圧迫を解消 */
+        padding: 10px 6%;
     }
     
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     
-    /* ロゴテキストの調整 */
-    .logo h2 { 
-        font-size: 1.1rem; 
-        font-weight: 500; 
-        letter-spacing: 0.12em; 
-        transition: color 0.5s, font-size 0.4s var(--ease-premium); 
+    /* ロゴ画像のレスポンシブコントロール */
+    .logo { display: flex; align-items: center; }
+    .logo a { display: block; line-height: 0; }
+    .logo img {
+        height: 38px; /* スマホ時のデフォルトサイズ */
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
+        transition: height 0.4s var(--ease-premium), filter 0.4s var(--ease-premium);
     }
-    /* 【修正】スマホスクロール時は文字サイズも一回り小さく、上品に佇むように */
-    #header.scrolled .logo h2 { 
-        color: var(--text-main); 
-        font-size: 0.95rem; 
-    }
-    .logo a { color: #ffffff; } 
-    #header.scrolled .logo a { color: var(--text-main); }
     
-    /* PC用ヘッダー設定（PC時は適切な余裕を保持） */
+    #header.scrolled .logo img { 
+        height: 32px; /* スクロール時に極薄化 */
+        filter: none;
+    }
+    
     @media (min-width: 768px) {
-        #header { padding: 20px 6%; }
-        #header.scrolled { padding: 16px 6%; }
-        .logo h2 { font-size: 1.2rem; }
-        #header.scrolled .logo h2 { font-size: 1.2rem; }
+        #header { padding: 24px 6%; }
+        #header.scrolled { padding: 14px 6%; }
+        .logo img { height: 48px; }
+        #header.scrolled .logo img { height: 44px; }
     }
     
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
-        .nav-pc { display: block; position: fixed; top: 75px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
-        .nav-pc.scrolled { top: 65px; background: rgba(250, 248, 245, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc { display: block; position: fixed; top: 85px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
+        .nav-pc.scrolled { top: 68px; background: rgba(244, 246, 249, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
         .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid transparent; } 
         .nav-pc.scrolled ul { border-bottom: 1px solid var(--border); }
-        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); } 
-        .nav-pc.scrolled ul li a { color: var(--text-sub); }
+        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px rgba(0,0,0,0.2); } 
+        .nav-pc.scrolled ul li a { color: var(--text-sub); text-shadow: none; }
         .nav-pc ul li a:hover { color: var(--accent) !important; }
     }
 
     /* ==========================================================================
-       背景サークル（前回のスマホダイナミック追従仕様のままです）
+       背景サークル（ネイビー＆ゴールドのニュアンスへ）
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -126,13 +125,18 @@
     }
     .bg-circle {
         position: absolute;
-        border: 1px solid rgba(140, 110, 81, 0.12);
         border-radius: 50%;
         will-change: transform;
         transition: transform 1.4s cubic-bezier(0.1, 0.8, 0.2, 1);
     }
-    .circle-1 { width: 75vw; height: 75vw; top: -10vh; left: -15vw; }
-    .circle-2 { width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; }
+    .circle-1 { 
+        width: 75vw; height: 75vw; top: -10vh; left: -15vw; 
+        border: 1px solid rgba(15, 26, 44, 0.06);
+    }
+    .circle-2 { 
+        width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; 
+        border: 1px solid rgba(197, 160, 89, 0.12);
+    }
 
     @media (max-width: 768px) {
         .circle-1 { width: 90vw; height: 90vw; top: -5vh; left: -25vw; }
@@ -170,7 +174,7 @@
     }
     .hero::after {
         content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to bottom, rgba(45,38,33,0.4) 0%, rgba(45,38,33,0.7) 100%); z-index: 1;
+        background: linear-gradient(to bottom, rgba(15,26,44,0.45) 0%, rgba(15,26,44,0.75) 100%); z-index: 1;
     }
     .hero-bg {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
@@ -182,9 +186,9 @@
         .hero-bg { height: 130%; } 
     }
     .hero-content {
-        position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 24px; margin-top: 20px;
+        position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 24px; margin-top: 40px;
     }
-    .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; }
+    .hero-title { font-size: 1.45rem; font-weight: 400; margin-bottom: 24px; line-height: 2.1; letter-spacing: 0.15em; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     
     .char {
         display: inline-block;
@@ -199,7 +203,7 @@
         transform: translateY(0);
     }
     
-    .hero-sub { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.35em; opacity: 0.75; font-weight: 300; text-transform: uppercase; }
+    .hero-sub { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.35em; opacity: 0.85; font-weight: 300; text-transform: uppercase; color: var(--accent); }
     @media (min-width: 768px) {
         .hero-title { font-size: 2.4rem; line-height: 2.3; }
         .hero-sub { font-size: 0.95rem; }
@@ -243,7 +247,7 @@
         display: flex; justify-content: space-between; align-items: center;
         background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
         padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400;
-        box-shadow: 0 4px 20px rgba(45, 38, 33, 0.01);
+        box-shadow: 0 4px 20px rgba(15, 26, 44, 0.02);
         font-size: 0.95rem;
         transition: var(--transition-smooth);
     }
@@ -251,7 +255,7 @@
     
     @media (min-width: 768px) {
         .link-card { padding: 28px 24px; font-size: 1rem; }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(140, 110, 81, 0.06); }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(15, 26, 44, 0.06); }
         .link-card:hover .arrow { transform: translateX(6px); }
     }
 
@@ -272,7 +276,7 @@
         overflow: hidden; 
         border-radius: 12px; 
         margin-bottom: 20px; 
-        box-shadow: 0 10px 30px rgba(45, 38, 33, 0.03); 
+        box-shadow: 0 10px 30px rgba(15, 26, 44, 0.04); 
     }
     @media (min-width: 768px) {
         .concept-image-wrapper { height: 220px; margin-bottom: 24px; }
@@ -294,7 +298,7 @@
     .vow-image {
         width: 100%; height: 55vw; border-radius: 12px;
         background-image: url('https://images.unsplash.com/photo-1590422750133-c97fb95e78fb?auto=format&fit=crop&q=80&w=1000');
-        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(45, 38, 33, 0.05);
+        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(15, 26, 44, 0.06);
     }
     .vow-content { width: 100%; }
     .story-highlight {
@@ -303,12 +307,12 @@
     
     @media (min-width: 768px) {
         .vow-flex { flex-direction: row; gap: 60px; margin-top: 40px; }
-        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(45, 38, 33, 0.06); }
+        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(15, 26, 44, 0.08); }
         .vow-content { flex: 1; }
         .story-highlight { font-size: 1.35rem; margin: 50px 0 20px 0; }
     }
 
-    /* ==========================================================================
+         /* ==========================================================================
        フッター ＆ モバイルフローティングナビ
        ========================================================================== */
     #footer { 
@@ -324,15 +328,15 @@
         left: 12px;
         bottom: 12px;
         height: 68px; 
-        background: rgba(255, 255, 255, 0.72); 
+        background: rgba(255, 255, 255, 0.78); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(237, 230, 223, 0.7);
+        border: 1px solid rgba(226, 232, 240, 0.8);
         border-radius: 20px;
         display: flex; 
         padding: 6px;
         z-index: 999; 
-        box-shadow: 0 10px 30px rgba(45, 38, 33, 0.08);
+        box-shadow: 0 10px 30px rgba(15, 26, 44, 0.1);
     }
     @media (min-width: 768px) { .mobile-nav { display: none; } }
     
@@ -344,11 +348,11 @@
     
     .mobile-nav-item.highlight { 
         flex: 1.4;
-        background: linear-gradient(135deg, #8c6e51, #a98a6d); 
-        color: #ffffff; 
+        background: linear-gradient(135deg, #0f1a2c, #22344d); 
+        color: var(--accent); 
         border-radius: 15px;
         font-size: 0.75rem;
-        box-shadow: 0 4px 15px rgba(140, 110, 81, 0.25);
+        box-shadow: 0 4px 15px rgba(15, 26, 44, 0.25);
         transition: transform 0.2s ease;
     }
     .mobile-nav-item.highlight:active {
@@ -363,9 +367,14 @@
         <div class="bg-circle circle-2" id="js-circle-2"></div>
     </div>
 
+    <!-- ヘッダー：テキストロゴから指定の画像ロゴへと差し替え -->
     <div id="header">
         <div class="header-inner">
-            <div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="circle -logo_01.jpg" alt="株式会社circle">
+                </a>
+            </div>
         </div>
     </div>
     
