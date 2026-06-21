@@ -44,7 +44,7 @@
         font-family: var(--font-serif); 
         background-color: var(--bg-base); 
         color: var(--text-main); 
-        line-height: 2.05; 
+        line-height: 2.1; 
         letter-spacing: 0.08em; 
         padding-bottom: 90px; 
         width: 100%;
@@ -54,13 +54,13 @@
     }
     
     @media (min-width: 768px) {
-        body { line-height: 2.3; letter-spacing: 0.1em; padding-bottom: 0; }
+        body { line-height: 2.4; letter-spacing: 0.1em; padding-bottom: 0; }
     }
     
     a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
 
     /* ==========================================================================
-       ヘッダー（トップと完全共通設計）
+       ヘッダー
        ========================================================================== */
     #header { 
         position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
@@ -126,7 +126,7 @@
        コンテンツエリア
        ========================================================================== */
     .container { 
-        max-width: 800px; 
+        max-width: 840px; 
         margin: 0 auto; 
         padding: 140px 6% 100px 6%;
         position: relative;
@@ -145,7 +145,7 @@
     }
 
     /* ==========================================================================
-       プロフィールテーブル
+       プロフィールテーブル（改行・可読性最適化）
        ========================================================================== */
     .profile-table { 
         width: 100%; 
@@ -166,23 +166,44 @@
     }
     .profile-table th { 
         text-align: left; 
-        padding: 22px 20px; 
+        padding: 24px 20px; 
         color: var(--accent); 
         font-weight: 500; 
-        width: 28%; 
+        width: 25%; 
         background-color: rgba(12, 27, 51, 0.01);
         border-right: 1px solid var(--border);
         font-size: 0.9rem;
+        vertical-align: top;
     }
     .profile-table td { 
-        padding: 22px 24px; 
+        padding: 24px 28px; 
         color: var(--text-main); 
         font-weight: 300;
+        vertical-align: top;
     } 
+    
+    /* 事業内容・ご案内の箇条書き・テキスト整形用 */
+    .text-block {
+        display: block;
+        margin-bottom: 12px;
+    }
+    .text-block:last-child {
+        margin-bottom: 0;
+    }
+    .indent-list {
+        padding-left: 1.2em;
+        text-indent: -1.2em;
+        display: block;
+        margin-bottom: 8px;
+    }
+    .indent-list:last-child {
+        margin-bottom: 0;
+    }
+
     @media (max-width: 600px) {
         .profile-table th, .profile-table td { display: block; width: 100%; border-right: none; }
-        .profile-table th { padding: 16px 20px 6px; background: none; }
-        .profile-table td { padding: 6px 20px 16px; }
+        .profile-table th { padding: 20px 20px 4px; background: none; }
+        .profile-table td { padding: 4px 20px 20px; }
     }
 
     .btn-back { 
@@ -206,7 +227,7 @@
     }
 
     /* ==========================================================================
-       フッター ＆ ナビ（トップと完全共通設計）
+       フッター ＆ ナビ
        ========================================================================== */
     #footer { 
         border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; 
@@ -276,11 +297,22 @@
             </tr>
             <tr>
                 <th>事業内容</th>
-                <td>住宅塗装・外壁塗り替え工事、屋根塗装・補修工事、住宅防水工事（雨漏り対策）、建築リフォーム全般・間取り変更工事、板金工事、外構（エクステリア）工事</td>
+                <td>
+                    <span class="indent-list">・ 住宅塗装、外壁塗り替え工事</span>
+                    <span class="indent-list">・ 屋根塗装、屋根補修工事</span>
+                    <span class="indent-list">・ 住宅防水工事 （雨漏り対策・防水全般）</span>
+                    <span class="indent-list">・ 建築リフォーム全般、間取り変更工事</span>
+                    <span class="indent-list">・ 板金工事</span>
+                    <span class="indent-list">・ 外構 （エクステリア） 工事</span>
+                </td>
             </tr>
             <tr>
                 <th>ご案内</th>
-                <td>信州の住まいに関する暮らしの困りごとをトータルでサポートいたします。見えなくなる下地補修から最後の仕上げまで、嘘のない誠実な手仕事でお応えします。まずはお気軽にご相談ください。</td>
+                <td>
+                    <span class="text-block">信州の住まいに関する暮らしの困りごとを、<br>トータルでサポートいたします。</span>
+                    <span class="text-block">見えなくなる下地補修から最後の仕上げまで、<br>嘘のない誠実な手仕事でお応えします。</span>
+                    <span class="text-block" style="color: var(--accent); font-weight: 400;">どうぞ、まずはお気軽にご相談ください。</span>
+                </td>
             </tr>
         </table>
 
