@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>株式会社circle | 信州の職人による外壁塗装・リフォーム</title>
+<title>株式会社circle | 信州の暮らしをトータルで支える総合建築・リフォーム・外壁塗装</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,17 +14,17 @@
 
 <style>
     /* ==========================================================================
-       デザインシステム ＆ 変数定義（ロゴのネイビー＆ゴールドへ最適化）
+       デザインシステム ＆ 変数定義（ご提供ロゴのプレミアムネイビー＆ゴールドに完全最適化）
        ========================================================================== */
     :root {
-        --bg-base: #f4f6f9;         /* 透明感のあるプレーンな背景 */
+        --bg-base: #f5f7fa;         /* 透明感のあるモダンな背景 */
         --bg-card: #ffffff;         
-        --text-main: #0f1a2c;       /* ロゴに合わせた深いネイビー */
-        --text-sub: #3a495e;        
-        --text-muted: #8492a6;
-        --accent: #c5a059;          /* ロゴに調和する上品なゴールド */
-        --accent-light: #f7f3eb;    
-        --border: #e2e8f0;
+        --text-main: #0c1b33;       /* ロゴに合わせた気品ある深いネイビー */
+        --text-sub: #33445e;        
+        --text-muted: #7e8f9f;
+        --accent: #cfab5a;          /* ロゴに調和する美しく輝くプレミアムゴールド */
+        --accent-light: #f7f4ed;    
+        --border: #e1e7ee;
         
         --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
         --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
@@ -73,7 +73,7 @@
     }
     
     #header.scrolled {
-        background: rgba(244, 246, 249, 0.85); 
+        background: rgba(245, 247, 250, 0.88); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
@@ -82,19 +82,18 @@
     
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     
-    /* ロゴ画像のレスポンシブコントロール */
     .logo { display: flex; align-items: center; }
     .logo a { display: block; line-height: 0; }
     .logo img {
-        height: 38px; /* スマホ時のデフォルトサイズ */
+        height: 38px; 
         width: auto;
         object-fit: contain;
-        filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
+        filter: drop-shadow(0px 2px 4px rgba(12,27,51,0.15));
         transition: height 0.4s var(--ease-premium), filter 0.4s var(--ease-premium);
     }
     
     #header.scrolled .logo img { 
-        height: 32px; /* スクロール時に極薄化 */
+        height: 32px; 
         filter: none;
     }
     
@@ -108,7 +107,7 @@
     .nav-pc { display: none; }
     @media (min-width: 768px) { 
         .nav-pc { display: block; position: fixed; top: 85px; left: 0; width: 100%; z-index: 99; background: transparent; transition: all 0.5s; } 
-        .nav-pc.scrolled { top: 68px; background: rgba(244, 246, 249, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc.scrolled { top: 68px; background: rgba(245, 247, 250, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
         .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid transparent; } 
         .nav-pc.scrolled ul { border-bottom: 1px solid var(--border); }
         .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.9); text-shadow: 0 1px 2px rgba(0,0,0,0.2); } 
@@ -117,7 +116,7 @@
     }
 
     /* ==========================================================================
-       背景サークル（ネイビー＆ゴールドのニュアンスへ）
+       背景サークル
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -131,11 +130,11 @@
     }
     .circle-1 { 
         width: 75vw; height: 75vw; top: -10vh; left: -15vw; 
-        border: 1px solid rgba(15, 26, 44, 0.06);
+        border: 1px solid rgba(12, 27, 51, 0.05);
     }
     .circle-2 { 
         width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; 
-        border: 1px solid rgba(197, 160, 89, 0.12);
+        border: 1px solid rgba(207, 171, 90, 0.12);
     }
 
     @media (max-width: 768px) {
@@ -174,11 +173,11 @@
     }
     .hero::after {
         content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to bottom, rgba(15,26,44,0.45) 0%, rgba(15,26,44,0.75) 100%); z-index: 1;
+        background: linear-gradient(to bottom, rgba(12,27,51,0.5) 0%, rgba(12,27,51,0.8) 100%); z-index: 1;
     }
     .hero-bg {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        background-image: url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=1600'); 
+        background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600'); 
         background-size: cover; background-position: center;
         will-change: transform;
     }
@@ -203,10 +202,10 @@
         transform: translateY(0);
     }
     
-    .hero-sub { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.35em; opacity: 0.85; font-weight: 300; text-transform: uppercase; color: var(--accent); }
+    .hero-sub { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.35em; opacity: 0.9; font-weight: 400; text-transform: uppercase; color: var(--accent); }
     @media (min-width: 768px) {
         .hero-title { font-size: 2.4rem; line-height: 2.3; }
-        .hero-sub { font-size: 0.95rem; }
+        .hero-sub { font-size: 0.9rem; }
     }
 
     /* ==========================================================================
@@ -235,7 +234,7 @@
     }
 
     /* ==========================================================================
-       各ページへのリンクボタン
+       事業内容に沿ったリンクグリッド
        ========================================================================== */
     .link-grid {
         display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 35px;
@@ -247,7 +246,7 @@
         display: flex; justify-content: space-between; align-items: center;
         background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
         padding: 22px 20px; text-decoration: none; color: var(--text-main); font-weight: 400;
-        box-shadow: 0 4px 20px rgba(15, 26, 44, 0.02);
+        box-shadow: 0 4px 20px rgba(12, 27, 51, 0.02);
         font-size: 0.95rem;
         transition: var(--transition-smooth);
     }
@@ -255,7 +254,7 @@
     
     @media (min-width: 768px) {
         .link-card { padding: 28px 24px; font-size: 1rem; }
-        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(15, 26, 44, 0.06); }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(12, 27, 51, 0.06); }
         .link-card:hover .arrow { transform: translateX(6px); }
     }
 
@@ -276,7 +275,7 @@
         overflow: hidden; 
         border-radius: 12px; 
         margin-bottom: 20px; 
-        box-shadow: 0 10px 30px rgba(15, 26, 44, 0.04); 
+        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.04); 
     }
     @media (min-width: 768px) {
         .concept-image-wrapper { height: 220px; margin-bottom: 24px; }
@@ -297,8 +296,8 @@
     .vow-flex { display: flex; flex-direction: column; gap: 35px; margin-top: 30px; }
     .vow-image {
         width: 100%; height: 55vw; border-radius: 12px;
-        background-image: url('https://images.unsplash.com/photo-1590422750133-c97fb95e78fb?auto=format&fit=crop&q=80&w=1000');
-        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(15, 26, 44, 0.06);
+        background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1000');
+        background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(12, 27, 51, 0.06);
     }
     .vow-content { width: 100%; }
     .story-highlight {
@@ -307,7 +306,7 @@
     
     @media (min-width: 768px) {
         .vow-flex { flex-direction: row; gap: 60px; margin-top: 40px; }
-        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(15, 26, 44, 0.08); }
+        .vow-image { flex: 1; height: 440px; box-shadow: 0 20px 45px rgba(12, 27, 51, 0.08); }
         .vow-content { flex: 1; }
         .story-highlight { font-size: 1.35rem; margin: 50px 0 20px 0; }
     }
@@ -328,15 +327,15 @@
         left: 12px;
         bottom: 12px;
         height: 68px; 
-        background: rgba(255, 255, 255, 0.78); 
+        background: rgba(255, 255, 255, 0.82); 
         backdrop-filter: blur(18px); 
         -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border: 1px solid rgba(225, 231, 238, 0.8);
         border-radius: 20px;
         display: flex; 
         padding: 6px;
         z-index: 999; 
-        box-shadow: 0 10px 30px rgba(15, 26, 44, 0.1);
+        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.12);
     }
     @media (min-width: 768px) { .mobile-nav { display: none; } }
     
@@ -348,11 +347,11 @@
     
     .mobile-nav-item.highlight { 
         flex: 1.4;
-        background: linear-gradient(135deg, #0f1a2c, #22344d); 
+        background: linear-gradient(135deg, #0c1b33, #193156); 
         color: var(--accent); 
         border-radius: 15px;
         font-size: 0.75rem;
-        box-shadow: 0 4px 15px rgba(15, 26, 44, 0.25);
+        box-shadow: 0 4px 15px rgba(12, 27, 51, 0.25);
         transition: transform 0.2s ease;
     }
     .mobile-nav-item.highlight:active {
@@ -391,36 +390,37 @@
                 <span class="keep-word">この街で出会えた</span><span class="keep-word">「縁」とともに。</span><br>
                 <span class="keep-word">住まいが蘇る、</span><span class="keep-word">次の「円」へ。</span>
             </h1>
-            <p class="hero-sub">株式会社ｃｉｒｃｌｅ</p>
+            <p class="hero-sub">つなぐ、支える、共に未来へ。｜株式会社ｃｉｒｃｌｅ</p>
         </div>
     </section>
 
     <section class="content-section fade-in" style="max-width: 750px;">
         <h2 class="section-title">私たちの想い</h2>
         <p class="story-text">
-            <span class="keep-word">家を塗り替える。</span><span class="keep-word">それは、単なる</span><span class="keep-word">「作業」ではありません。</span>
+            <span class="keep-word">住まいを整える。</span><span class="keep-word">それは、単なる</span><span class="keep-word">「工事」ではありません。</span>
         </p>
         <p class="story-text">
-            <span class="keep-word">その壁には、</span><span class="keep-word">家族が帰ってきた日の</span><span class="keep-word">記憶や、</span><span class="keep-word">子どもたちが</span><span class="keep-word">成長した日々の</span><span class="keep-word">足跡が、</span><span class="keep-word">目に見えない</span><span class="keep-word">大切な思い出として</span><span class="keep-word">刻まれています。</span>
+            <span class="keep-word">これまで家族が</span><span class="keep-word">帰ってきた日の記憶、</span><span class="keep-word">子どもたちが成長した</span><span class="keep-word">日々の足跡。</span><span class="keep-word">お家には目に見えない</span><span class="keep-word">大切な思い出が</span><span class="keep-word">刻まれています。</span>
         </p>
         <p class="story-text">
-            <span class="keep-word">時が経ち、</span><span class="keep-word">少し古くなってしまった</span><span class="keep-word">その場所に、</span><span class="keep-word">もう一度、</span><span class="keep-word">新しい命を</span><span class="keep-word">吹き込みたい。</span><span class="keep-word">私たちｃｉｒｃｌｅ</span><span class="keep-word">（サークル）には、</span><span class="keep-word">そんな強い願いが</span><span class="keep-word">込められています。</span>
+            <span class="keep-word">私たちｃｉｒｃｌｅ</span><span class="keep-word">（サークル）は、</span><span class="keep-word">美しい外壁塗装・屋根塗装から、</span><span class="keep-word">雨漏りを防ぐ確かな防水、</span><span class="keep-word">お家の骨組みを支える建築工事、</span><span class="keep-word">そして街並みに調和する外構まで、</span><span class="keep-word">住まいのすべてをトータルで守ります。</span><span class="keep-word">古くなった場所に、</span><span class="keep-word">もう一度、新しい命を吹き込み、</span><span class="keep-word">次の世代へ繋いでいくこと。</span><span class="keep-word">それが私たちの使命です。</span>
         </p>
     </section>
 
     <section class="content-section fade-in">
-        <h2 class="section-title">外壁塗装・リフォームを知る</h2>
+        <h2 class="section-title">住まいのトータルリフォーム・工事一覧</h2>
         <p class="story-text" style="text-align: center; margin-bottom: 20px;">
-            大切なお家を守るための知識や、私たちの施工へのこだわりをご紹介します。
+            信州のきびしい気候から大切なお家を丸ごと守る、私たちの実直な仕事をご紹介します。
         </p>
         
         <div class="link-grid">
-            <a href="./wall-status.html" class="link-card">外壁の塗り替え目安 <span class="arrow">→</span></a>
-            <a href="./roof-status.html" class="link-card">屋根の塗り替え目安 <span class="arrow">→</span></a>
-            <a href="./materials.html" class="link-card">塗料の種類について <span class="arrow">→</span></a>
-            <a href="./methods.html" class="link-card">外壁塗装の工法 <span class="arrow">→</span></a>
-            <a href="./wall-process.html" class="link-card">外壁塗装工事の流れ <span class="arrow">→</span></a>
-            <a href="./roof-process.html" class="link-card">屋根塗装工事の流れ <span class="arrow">→</span></a>
+            <a href="./wall-status.html" class="link-card">住宅塗装・外壁塗り替え目安 <span class="arrow">→</span></a>
+            <a href="./roof-status.html" class="link-card">屋根塗装・補修のタイミング <span class="arrow">→</span></a>
+            <a href="./materials.html" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
+            <a href="./wall-process.html" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
+            <a href="./waterproof.html" class="link-card">住宅防水工事（雨漏り対策・防水全般） <span class="arrow">→</span></a>
+            <a href="./architecture.html" class="link-card">建築リフォーム・間取り変更工事（全般） <span class="arrow">→</span></a>
+            <a href="./sheetmetal-exterior.html" class="link-card">板金工事 ＆ 外構（エクステリア）工事 <span class="arrow">→</span></a>
         </div>
     </section>
 
@@ -434,7 +434,7 @@
                 </div>
                 <h3 class="concept-label">● ひとつめは、人と人との「縁」</h3>
                 <p class="story-text">
-                    大手のような効率重視の付き合いではなく、信州の街で出会えたお一人おひとりの声にじっくりと耳を傾け、お茶を飲みながら「これからの暮らし」を一緒に語り合えるような温かい繋がりを何より大切にします。
+                    効率重視の付き合いではなく、信州の街で出会えたお一人おひとりの声にじっくり耳を傾け、お茶を飲みながら「これからの暮らしの困りごと」を建築のプロとして一緒に解決していける温かい繋がりを何より大切にします。
                 </p>
             </div>
 
@@ -444,7 +444,7 @@
                 </div>
                 <h3 class="concept-label">● ふたつめは、住まいの「再生の円」</h3>
                 <p class="story-text">
-                    傷んだ場所を優しく労わり、次の10年、20年へと心地よく循環していくための『再生』をお届けします。
+                    塗装、防水、板金、そして大工仕事まで。傷んだ場所をトータルで優しく労わり、お家の外も中も次の10年、20年へと心地よく循環していくための確かな『再生』をお届けします。
                 </p>
             </div>
 
@@ -454,14 +454,14 @@
                 </div>
                 <h3 class="concept-label">● みっつめは、笑顔の「円」</h3>
                 <p class="story-text">
-                    ひとつの良い仕事が、施主様の笑顔になり、それがご近所様の笑顔になり、地域へと広がっていく。円を描くようにみんなの幸せが繋がっていくことが、私たちの理想です。
+                    ひとつの丁寧なリフォーム仕事が、施主様の笑顔になり、それがご近所様の笑顔になり、地域へと広がっていく。円を描くようにみんなの幸せが繋がっていくことが、私たちの理想です。
                 </p>
             </div>
         </div>
     </section>
 
     <section class="content-section fade-in" style="max-width: 1000px;">
-        <h2 class="section-title">一刷毛に魂を込める、まっすぐな手仕事</h2>
+        <h2 class="section-title">住まいに関わる全ての仕事に、まっすぐな手仕事を</h2>
         <div class="vow-flex">
             <div class="vow-image"></div>
             <div class="vow-content">
@@ -469,13 +469,13 @@
                     どれだけ時代が進んでも、人の温もりが宿る住まいは、人の「手」でしか守れないと私たちは信じています。
                 </p>
                 <p class="story-text">
-                    見えなくなってしまう下地の一層から、最後の仕上げまで。嘘のない、実直な手仕事を大切に、私たちは今日も、あなたの大切な我が家と誠実向き合います。
+                    塗装の一刷毛、防水の1ミリ、板金の収まり、見えなくなってしまう下地の補修から最後の仕上げまで。嘘のない、実直な手仕事を大切に、私たちは今日も、あなたの大切な我が家と誠実に向き合います。
                 </p>
                 <p class="story-highlight">
                     「ｃｉｒｃｌｅさんに任せて、本当によかった。」
                 </p>
                 <p class="story-text" style="margin-top: 15px; text-align: center;">
-                    10年先も、その壁を見上げるたびに微笑んでいただけるように。
+                    10年先も、我が家を見上げるたびに微笑んでいただけるように。
                 </p>
             </div>
         </div>
@@ -483,7 +483,7 @@
 
     <div id="footer">
         Copyright (C) kensetumap.com All Rights Reserved.<br>
-        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 すべての「えん」を大切に 〜</span>
+        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
     </div>
 
     <div class="mobile-nav">
@@ -519,7 +519,7 @@
     }
 
     /**
-     * 2. 余白が呼吸するスクロール連動モーション
+     * 2. スクロール連動フェードイン
      */
     class RevealController {
         constructor() {
@@ -544,7 +544,7 @@
     }
 
     /**
-     * 3. 複合ダイナミクス・マネージャー
+     * 3. インタラクション・スクロールエフェクト
      */
     class DynamicInteractionManager {
         constructor() {
