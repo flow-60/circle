@@ -6,12 +6,10 @@
 <title>株式会社circle | 信州の暮らしをトータルで支える総合建築・リフォーム・外壁塗装</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- スムーススクロール用ライブラリ -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 
 <style>
@@ -19,7 +17,7 @@
        デザインシステム ＆ 変数定義（プレミアムネイビー＆ゴールド）
        ========================================================================== */
     :root {
-        --bg-base: #f7f6f3;         /* image.pngの背景にあるような上質な生成り・アースカラー */
+        --bg-base: #f7f6f3;         /* 上質な生成り・アースカラー */
         --bg-card: #ffffff;         
         --text-main: #2b2b2b;       
         --text-sub: #4a4a4a;        
@@ -114,7 +112,7 @@
     }
 
     /* ==========================================================================
-       デザイン用：細線幾何学サークル (image.png / image_2.pngのニュアンス)
+       デザイン用：細線幾何学サークル
        ========================================================================== */
     .bg-container {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -160,7 +158,7 @@
     .keep-word { display: inline-block; }
 
     /* ==========================================================================
-       Hero領域 (image_2.pngのレイアウト構図)
+       Hero領域
        ========================================================================== */
     .hero {
         position: relative; width: 100%; 
@@ -174,8 +172,8 @@
     }
     .hero-bg {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        /* image_2.pngの美しい光が差し込む外観をイメージした高解像度住宅画像 */
-        background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1600'); 
+        /* ご指定のメイン画像を設定 */
+        background-image: url('images/toppage.png'); 
         background-size: cover; background-position: center;
         will-change: transform;
     }
@@ -256,7 +254,7 @@
     }
 
     /* ==========================================================================
-       3つの「えん」レイアウト (image.pngを完全トレース)
+       3つの「えん」レイアウト
        ========================================================================== */
     .concept-container {
         display: flex; flex-direction: column; gap: 60px; margin-top: 50px;
@@ -309,13 +307,13 @@
     }
 
     /* ==========================================================================
-       未来の円・誓いセクション (image_2.pngのデザインと言葉を完全統合)
+       未来の円・誓いセクション
        ========================================================================== */
     .vow-flex { display: flex; flex-direction: column; gap: 35px; margin-top: 30px; }
     .vow-image {
         width: 100%; height: 55vw; border-radius: 12px;
-        /* image_2.pngのような美しい外観をイメージした高解像度別アングル住宅写真 */
-        background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000');
+        /* ご指定の未来画像を設定 */
+        background-image: url('images/mirai_en.png');
         background-size: cover; background-position: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     }
     .vow-content { width: 100%; }
@@ -362,13 +360,11 @@
 </head>
 <body>
 
-    <!-- 背景の幾何学デザイン線サークル -->
     <div class="bg-container">
         <div class="bg-circle circle-1" id="js-circle-1"></div>
         <div class="bg-circle circle-2" id="js-circle-2"></div>
     </div>
 
-    <!-- グローバルヘッダー -->
     <div id="header">
         <div class="header-inner">
             <div class="logo">
@@ -379,7 +375,6 @@
         </div>
     </div>
     
-    <!-- PC用ナビゲーション -->
     <div class="nav-pc" id="js-nav-pc">
         <ul>
             <li><a href="./index.html">ホーム</a></li>
@@ -387,7 +382,6 @@
         </ul>
     </div>
 
-    <!-- メインヒーロービジュアル (image_2.pngの美しい構図) -->
     <section class="hero">
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
@@ -399,7 +393,6 @@
         </div>
     </section>
 
-    <!-- 私たちの想い -->
     <section class="content-section fade-in" style="max-width: 750px;">
         <h2 class="section-title">私たちの想い</h2>
         <p class="story-text">
@@ -413,7 +406,6 @@
         </p>
     </section>
 
-    <!-- 工事一覧メニュー（前回の導線グリッド） -->
     <section class="content-section fade-in">
         <h2 class="section-title">住まいのトータルリフォーム・工事一覧</h2>
         <p class="story-text" style="text-align: center; margin-bottom: 20px;">
@@ -421,26 +413,23 @@
         </p>
         
         <div class="link-grid">
-            <a href="#" class="link-card">住宅塗装・外壁塗り替え目安 <span class="arrow">→</span></a>
-            <a href="#" class="link-card">屋根塗装・補修 the タイミング <span class="arrow">→</span></a>
-            <a href="#" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
-            <a href="#" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
+            <a href="./wall-status.html" class="link-card">住宅塗装・外壁塗り替え目安 <span class="arrow">→</span></a>
+            <a href="./roof-status.html" class="link-card">屋根塗装・補修 the タイミング <span class="arrow">→</span></a>
+            <a href="./materials.html" class="link-card">塗料の種類とこだわり <span class="arrow">→</span></a>
+            <a href="./wall-process.html" class="link-card">外壁・リフォーム工事の流れ <span class="arrow">→</span></a>
             <a href="#" class="link-card">住宅防水工事（雨漏り対策・防水全般） <span class="arrow">→</span></a>
             <a href="#" class="link-card">建築リフォーム・間取り変更工事（全般） <span class="arrow">→</span></a>
             <a href="#" class="link-card">板金工事 ＆ 外構（エクステリア）工事 <span class="arrow">→</span></a>
         </div>
     </section>
 
-    <!-- 3つの「えん」セクション（image.pngの完璧な再現） -->
     <section class="content-section fade-in">
         <h2 class="section-title">すべては、円のように繋がっている</h2>
         
         <div class="concept-container">
-            <!-- 1つめの円：住まいの再生の円 -->
             <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <!-- 職人が外壁にブラシ・ローラーを当てているイメージ -->
-                    <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&q=80&w=600" alt="住まいの再生の円" class="concept-image">
+                    <img src="images/sumai_en.png" alt="住まいの再生の円" class="concept-image">
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの再生の円</h3>
@@ -452,11 +441,9 @@
                 </div>
             </div>
 
-            <!-- 2つめの円：笑顔の円 -->
             <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <!-- 施主様（家族）とスタッフが笑顔で握手をしているイメージ -->
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=600" alt="笑顔の円" class="concept-image">
+                    <img src="images/egao_en.png" alt="笑顔の円" class="concept-image">
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">笑顔の円</h3>
@@ -470,11 +457,9 @@
                 </div>
             </div>
 
-            <!-- 3つめの円：住まいの未来の円 -->
             <div class="concept-row">
                 <div class="concept-image-wrapper">
-                    <!-- 美しいモダン住宅の外観と植栽イメージ -->
-                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=600" alt="住まいの未来の円" class="concept-image">
+                    <img src="images/mirai_en.png" alt="住まいの未来の円" class="concept-image">
                 </div>
                 <div class="concept-content">
                     <h3 class="concept-label">住まいの未来の円</h3>
@@ -488,7 +473,6 @@
         </div>
     </section>
 
-    <!-- 誓い・ラストメッセージセクション（image_2.pngのデザインと言葉） -->
     <section class="content-section fade-in" style="max-width: 1000px;">
         <h2 class="section-title">住まいの未来を、共に描く。</h2>
         <div class="vow-flex">
@@ -507,13 +491,11 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <div id="footer">
         Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.<br>
         <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.6; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
     </div>
 
-    <!-- スマホ専用固定ボトムナビ -->
     <div class="mobile-nav">
         <a href="./index.html" class="mobile-nav-item">ホーム</a>
         <a href="./profile.html" class="mobile-nav-item">会社概要</a>
@@ -544,7 +526,7 @@
         }
     }
 
-    // 2. スクロールに応じた美しくシームレスなフェードイン（Reveal効果）
+    // 2. スクロールに応じた美しくシームレスなフェードイン
     class RevealController {
         constructor() {
             this.elements = document.querySelectorAll('.fade-in');
@@ -619,7 +601,7 @@
         }
     }
 
-    // 4. タイポグラフィ・シネマティック文字アニメーション（一文字ずつなめらかに浮かぶ）
+    // 4. タイポグラフィ・シネマティック文字アニメーション
     class TypographyAnimator {
         constructor() {
             this.titleContainer = document.getElementById('js-hero-title');
