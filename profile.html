@@ -3,31 +3,361 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>会社概要｜株式会社ｃｉｒｃｌｅ</title>
+<title>会社概要 ｜ 株式会社circle</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
 <style>
-    :root { --bg-base: #faf8f5; --bg-card: #ffffff; --text-main: #2d2621; --text-sub: #5c524a; --text-muted: #a1958d; --accent: #8c6e51; --accent-light: #f5ede4; --border: #ede6df; --font-serif: "Yu Mincho", serif; --font-sans: -apple-system, sans-serif; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: var(--font-serif); background-color: var(--bg-base); color: var(--text-main); line-height: 2.0; letter-spacing: 0.08em; padding-bottom: 70px; } @media (min-width: 962px) { body { padding-bottom: 0; } } a { color: inherit; text-decoration: none; } #header { position: sticky; top: 0; z-index: 100; background: rgba(250, 248, 245, 0.93); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 20px 4%; } .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; } .logo h2 { font-size: 1.3rem; font-weight: 700; } .nav-pc { display: none; } @media (min-width: 768px) { .nav-pc { display: block; max-width: 1200px; margin: 0 auto; padding: 0 4%; } .nav-pc ul { display: flex; list-style: none; gap: 40px; padding: 16px 0 8px 0; border-bottom: 1px solid var(--border); } .nav-pc ul li a { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); } } .container { max-width: 700px; margin: 0 auto; padding: 60px 6% 100px 6%; } h1 { font-size: 1.5rem; font-weight: 500; margin-bottom: 40px; text-align: center; } .profile-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 0.95rem; } .profile-table tr { border-bottom: 1px solid var(--border); } .profile-table th { text-align: left; padding: 18px 10px; color: var(--text-muted); font-weight: 600; width: 30%; } .profile-table td { padding: 18px 10px; color: var(--text-main); } .btn-back { display: block; text-align: center; margin-top: 60px; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); } #footer { border-top: 1px solid var(--border); padding: 40px 6%; text-align: center; font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); } .mobile-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 64px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--border); display: flex; z-index: 999; } .mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; border-right: 1px solid var(--border); } .mobile-nav-item.highlight { background: var(--accent); color: #ffffff; } @media (min-width: 962px) { .mobile-nav { display: none; } }
+    /* ==========================================================================
+       デザインシステム ＆ 変数定義（トップページと完全共通化）
+       ========================================================================== */
+    :root {
+        --bg-base: #f5f7fa;         
+        --bg-card: #ffffff;         
+        --text-main: #0c1b33;       
+        --text-sub: #33445e;        
+        --text-muted: #7e8f9f;
+        --accent: #cfab5a;          
+        --accent-light: #f7f4ed;    
+        --border: #e1e7ee;
+        
+        --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+
+        --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+        --transition-smooth: opacity 1.2s var(--ease-premium), filter 1.2s var(--ease-premium), letter-spacing 1.2s var(--ease-premium);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { 
+        overflow-x: hidden; 
+        scroll-behavior: initial;
+    }
+
+    body { 
+        font-family: var(--font-serif); 
+        background-color: var(--bg-base); 
+        color: var(--text-main); 
+        line-height: 2.05; 
+        letter-spacing: 0.08em; 
+        padding-bottom: 90px; 
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    @media (min-width: 768px) {
+        body { line-height: 2.3; letter-spacing: 0.1em; padding-bottom: 0; }
+    }
+    
+    a { color: inherit; text-decoration: none; transition: all 0.4s var(--ease-premium); }
+
+    /* ==========================================================================
+       ヘッダー（トップと完全共通設計）
+       ========================================================================== */
+    #header { 
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 100; 
+        background: rgba(245, 247, 250, 0.88); 
+        backdrop-filter: blur(18px); 
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 6%;
+        transition: padding 0.4s var(--ease-premium);
+    }
+    
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    
+    .logo { display: flex; align-items: center; }
+    .logo a { display: block; line-height: 0; }
+    .logo img {
+        height: 32px; 
+        width: auto;
+        object-fit: contain;
+    }
+    
+    @media (min-width: 768px) {
+        #header { padding: 14px 6%; }
+        .logo img { height: 44px; }
+    }
+    
+    .nav-pc { display: none; }
+    @media (min-width: 768px) { 
+        .nav-pc { display: block; position: fixed; top: 68px; left: 0; width: 100%; z-index: 99; background: rgba(245, 247, 250, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .nav-pc ul { display: flex; list-style: none; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 18px 4% 14px; border-bottom: 1px solid var(--border); } 
+        .nav-pc ul li a { font-size: 0.85rem; font-weight: 500; color: var(--text-sub); } 
+        .nav-pc ul li a:hover { color: var(--accent) !important; }
+    }
+
+    /* ==========================================================================
+       背景サークル
+       ========================================================================== */
+    .bg-container {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        will-change: transform;
+        transition: transform 1.4s cubic-bezier(0.1, 0.8, 0.2, 1);
+    }
+    .circle-1 { 
+        width: 75vw; height: 75vw; top: -10vh; left: -15vw; 
+        border: 1px solid rgba(12, 27, 51, 0.05);
+    }
+    .circle-2 { 
+        width: 55vw; height: 55vw; bottom: -10vh; right: -15vw; 
+        border: 1px solid rgba(207, 171, 90, 0.12);
+    }
+
+    @media (max-width: 768px) {
+        .circle-1 { width: 90vw; height: 90vw; top: -5vh; left: -25vw; }
+        .circle-2 { width: 80vw; height: 80vw; bottom: 5vh; right: -25vw; }
+    }
+
+    /* ==========================================================================
+       コンテンツエリア
+       ========================================================================== */
+    .container { 
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 140px 6% 100px 6%;
+        position: relative;
+        z-index: 1;
+    }
+    @media (min-width: 768px) {
+        .container { padding: 200px 4% 140px 4%; }
+    }
+
+    h1 { 
+        font-size: 1.35rem; font-weight: 400; color: var(--accent); margin-bottom: 40px;
+        text-align: center; letter-spacing: 0.15em;
+    }
+    h1::after {
+        content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background-color: var(--accent); margin: 20px auto 0;
+    }
+
+    /* ==========================================================================
+       プロフィールテーブル
+       ========================================================================== */
+    .profile-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-bottom: 50px; 
+        font-size: 0.95rem; 
+        background: var(--bg-card);
+        border-radius: 12px;
+        border-style: hidden;
+        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.03);
+        overflow: hidden;
+    }
+    .profile-table tr { 
+        border-bottom: 1px solid var(--border); 
+    }
+    .profile-table tr:last-child {
+        border-bottom: none;
+    }
+    .profile-table th { 
+        text-align: left; 
+        padding: 22px 20px; 
+        color: var(--accent); 
+        font-weight: 500; 
+        width: 28%; 
+        background-color: rgba(12, 27, 51, 0.01);
+        border-right: 1px solid var(--border);
+        font-size: 0.9rem;
+    }
+    .profile-table td { 
+        padding: 22px 24px; 
+        color: var(--text-main); 
+        font-weight: 300;
+    } 
+    @media (max-width: 600px) {
+        .profile-table th, .profile-table td { display: block; width: 100%; border-right: none; }
+        .profile-table th { padding: 16px 20px 6px; background: none; }
+        .profile-table td { padding: 6px 20px 16px; }
+    }
+
+    .btn-back { 
+        display: inline-block; 
+        text-align: center; 
+        font-family: var(--font-sans); 
+        font-size: 0.85rem; 
+        color: var(--text-sub); 
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        padding: 12px 35px;
+        border-radius: 30px;
+        margin: 20px auto 0;
+        display: table;
+        box-shadow: 0 4px 15px rgba(12, 27, 51, 0.02);
+    }
+    .btn-back:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       フッター ＆ ナビ（トップと完全共通設計）
+       ========================================================================== */
+    #footer { 
+        border-top: 1px solid var(--border); padding: 60px 6% 110px 6%; text-align: center; 
+        font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); position: relative; z-index: 2;
+    }
+    @media (min-width: 768px) { #footer { padding: 60px 4% 40px 4%; } }
+
+    .mobile-nav { 
+        position: fixed; width: calc(100% - 24px); left: 12px; bottom: 12px; height: 68px; 
+        background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(225, 231, 238, 0.8); border-radius: 20px; display: flex; padding: 6px; z-index: 999; 
+        box-shadow: 0 10px 30px rgba(12, 27, 51, 0.12);
+    }
+    @media (min-width: 768px) { .mobile-nav { display: none; } }
+    
+    .mobile-nav-item { 
+        flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+        color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
+    }
+    
+    .mobile-nav-item.highlight { 
+        flex: 1.4; background: linear-gradient(135deg, #0c1b33, #193156); color: var(--accent); 
+        border-radius: 15px; font-size: 0.75rem; box-shadow: 0 4px 15px rgba(12, 27, 51, 0.25); transition: transform 0.2s ease;
+    }
+    .mobile-nav-item.highlight:active { transform: scale(0.96); }
 </style>
 </head>
 <body>
-    <div id="header"><div class="header-inner"><div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div></div></div>
-    <div class="nav-pc"><ul><li><a href="./index.html">ホーム</a></li><li><a href="./profile.html">会社概要</a></li></ul></div>
+
+    <div class="bg-container">
+        <div class="bg-circle circle-1" id="js-circle-1"></div>
+        <div class="bg-circle circle-2" id="js-circle-2"></div>
+    </div>
+
+    <div id="header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="images/circle -logo_01.png" alt="株式会社circle">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav-pc">
+        <ul>
+            <li><a href="./index.html">ホーム</a></li>
+            <li><a href="./profile.html">会社概要</a></li>
+        </ul>
+    </div>
     
     <div class="container">
         <h1>会社概要</h1>
         
         <table class="profile-table">
-            <tr><th>会社名</th><td>株式会社ｃｉｒｃｌｅ</td></tr>
-            <tr><th>所在地</th><td>長野県塩尻市広丘堅石817-7</td></tr>
-            <tr><th>電話番号</th><td>090-3408-1379</td></tr>
-            <tr><th>対応工事</th><td>外壁塗装工事、屋根塗装工事</td></tr>
-            <tr><th>ご案内</th><td>お問い合わせをお待ちしております。ご不明な点がございましたら、まずはお気軽にご相談下さい。</td></tr>
+            <tr>
+                <th>会社名</th>
+                <td>株式会社ｃｉｒｃｌｅ （サークル）</td>
+            </tr>
+            <tr>
+                <th>所在地</th>
+                <td>長野県塩尻市広丘堅石817-7</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td>090-3408-1379</td>
+            </tr>
+            <tr>
+                <th>事業内容</th>
+                <td>住宅塗装・外壁塗り替え工事、屋根塗装・補修工事、住宅防水工事（雨漏り対策）、建築リフォーム全般・間取り変更工事、板金工事、外構（エクステリア）工事</td>
+            </tr>
+            <tr>
+                <th>ご案内</th>
+                <td>信州の住まいに関する暮らしの困りごとをトータルでサポートいたします。見えなくなる下地補修から最後の仕上げまで、嘘のない誠実な手仕事でお応えします。まずはお気軽にご相談ください。</td>
+            </tr>
         </table>
 
         <a href="./index.html" class="btn-back">← ホームへ戻る</a>
     </div>
 
-    <div id="footer">Copyright (C) kensetumap.com All Rights Reserved.</div>
-    <div class="mobile-nav"><a href="./index.html" class="mobile-nav-item">ホーム</a><a href="./profile.html" class="mobile-nav-item">会社概要</a><a href="tel:09034081379" class="mobile-nav-item highlight">相談してみる</a></div>
+    <div id="footer">
+        Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.<br>
+        <span style="font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.7; display: inline-block; margin-top: 12px;">〜 つなぐ、支える、共に未来へ。 〜</span>
+    </div>
+
+    <div class="mobile-nav">
+        <a href="./index.html" class="mobile-nav-item">ホーム</a>
+        <a href="./profile.html" class="mobile-nav-item">会社概要</a>
+        <a href="tel:09034081379" class="mobile-nav-item highlight">無料相談はこちら</a>
+    </div>
+
+<script>
+    const isMobile = window.innerWidth < 768;
+
+    // 慣性スクロール（Lenis）
+    class SmoothScrollManager {
+        constructor() {
+            this.lenis = new Lenis({
+                duration: isMobile ? 1.0 : 1.2, 
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                smoothWheel: true
+            });
+            this.init();
+        }
+        init() {
+            const raf = (time) => {
+                this.lenis.raf(time);
+                requestAnimationFrame(raf);
+            };
+            requestAnimationFrame(raf);
+        }
+    }
+
+    // インタラクション・スクロールエフェクト
+    class DynamicInteractionManager {
+        constructor() {
+            this.c1 = document.getElementById("js-circle-1");
+            this.c2 = document.getElementById("js-circle-2");
+            this.init();
+        }
+        init() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const moveY = scrolled * 0.12; 
+                if (this.c1 && this.c2) {
+                    this.c1.style.transform = `translateY(${moveY}px)`;
+                    this.c2.style.transform = `translateY(${-moveY * 0.7}px)`;
+                }
+            });
+
+            if (!isMobile) {
+                document.addEventListener("mousemove", (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 40; 
+                    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+                    const scrolled = window.pageYOffset * 0.12;
+                    
+                    if (this.c1 && this.c2) {
+                        this.c1.style.transform = `translate(${x}px, ${y + scrolled}px)`;
+                        this.c2.style.transform = `translate(${-x}px, ${-y - (scrolled * 0.7)}px)`;
+                    }
+                });
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        new SmoothScrollManager();
+        new DynamicInteractionManager();
+    });
+</script>
 </body>
 </html>
