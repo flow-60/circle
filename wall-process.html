@@ -4,26 +4,55 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>外壁塗装工事の流れ｜株式会社ｃｉｒｃｌｅ</title>
+<link rel="icon" href="images/circle%20-logo_01.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     /* ※共通デザインシステム（以下同様） */
     :root { --bg-base: #faf8f5; --bg-card: #ffffff; --text-main: #2d2621; --text-sub: #5c524a; --text-muted: #a1958d; --accent: #8c6e51; --accent-light: #f5ede4; --border: #ede6df; --font-serif: "Yu Mincho", serif; --font-sans: -apple-system, sans-serif; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: var(--font-serif); background-color: var(--bg-base); color: var(--text-main); line-height: 2.0; letter-spacing: 0.08em; padding-bottom: 70px; } @media (min-width: 962px) { body { padding-bottom: 0; } } a { color: inherit; text-decoration: none; } #header { position: sticky; top: 0; z-index: 100; background: rgba(250, 248, 245, 0.93); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 20px 4%; } .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; } .logo h2 { font-size: 1.3rem; font-weight: 700; } .nav-pc { display: none; } @media (min-width: 768px) { .nav-pc { display: block; max-width: 1200px; margin: 0 auto; padding: 0 4%; } .nav-pc ul { display: flex; list-style: none; gap: 40px; padding: 16px 0 8px 0; border-bottom: 1px solid var(--border); } .nav-pc ul li a { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); } } .container { max-width: 800px; margin: 0 auto; padding: 60px 6% 100px 6%; } h1 { font-size: 1.6rem; font-weight: 500; margin-bottom: 32px; text-align: center; line-height: 1.6; } .main-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px; margin-bottom: 40px; } p { font-size: 0.95rem; color: var(--text-sub); text-align: justify; margin-bottom: 32px; } .point-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; } .point-box h3 { font-size: 1.15rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; } .btn-back { display: block; text-align: center; margin-top: 60px; font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); } #footer { border-top: 1px solid var(--border); padding: 40px 6%; text-align: center; font-size: 0.75rem; color: var(--text-muted); background: var(--bg-card); } .mobile-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 64px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--border); display: flex; z-index: 999; } .mobile-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; border-right: 1px solid var(--border); } .mobile-nav-item.highlight { background: var(--accent); color: #ffffff; } @media (min-width: 962px) { .mobile-nav { display: none; } }
 
-    .footer-links { margin-bottom: 16px; font-family: var(--font-sans); font-size: 0.8rem; }
-    .footer-links a { margin: 0 12px; color: var(--text-sub); font-weight: 600; }
-    .contact-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 20px; }
-    .cta-btn.line { background: #06c755; font-size: 1.1rem; }
-    .cta-btn.insta { background: transparent; color: var(--text-main); border: 1px solid var(--text-main); box-shadow: none; font-size: 1.1rem; }
-    .mobile-nav-item.line { color: #06a94a; }
+/* ===== 追加: トップページと統一したデザイン ===== */
+:root { --bg-base: #f5f7fa; --text-main: #0c1b33; --text-sub: #33445e; --text-muted: #7e8f9f; --accent: #cfab5a; --accent-light: #f7f4ed; --border: #e1e7ee; --font-serif: 'Noto Serif JP', "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif; }
+body { padding-bottom: 96px !important; -webkit-font-smoothing: antialiased; }
+@media (min-width: 768px) { body { padding-bottom: 0 !important; } }
+.logo a { display: block; line-height: 0; }
+.logo img { height: 36px; width: auto; object-fit: contain; }
+@media (min-width: 768px) { .logo img { height: 44px; } }
+.point-box h3 { color: var(--accent-dark); }
+.main-img { background: var(--border); }
+.nav-pc ul li a:hover { color: var(--accent-dark); }
+#footer { padding-bottom: 40px; }
+.profile-table td a { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ===== 追加: 共通CTA / モバイルナビ ===== */
+:root { --accent-dark: #9a7727; }
+.cta-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; margin: 48px 0 0; text-align: center; box-shadow: 0 4px 20px rgba(12,27,51,0.03); }
+.cta-lead { font-size: 1rem; color: var(--text-main); margin-bottom: 20px !important; text-align: center !important; }
+.cta-buttons { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 768px) { .cta-buttons { grid-template-columns: repeat(3, 1fr); } }
+.cta-btn { display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 16px; border-radius: 12px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; line-height: 1.5; transition: transform .3s ease, box-shadow .3s ease; }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(12,27,51,0.12); }
+.cta-btn.line { background: #05a34a; color: #fff; }
+.cta-btn.insta { background: #fff; color: #0c1b33; border: 1px solid #0c1b33; }
+.cta-btn.tel { background: linear-gradient(135deg, #0c1b33, #193156); color: #cfab5a; }
+.card-note { display: block; font-family: var(--font-sans); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.04em; line-height: 1.6; margin-top: 2px; }
+.link-card > span:first-child { flex: 1; }
+.mobile-nav { position: fixed; width: calc(100% - 24px); left: 12px; bottom: 12px; height: 68px; background: rgba(255,255,255,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(225,231,238,0.8); border-radius: 20px; display: flex; padding: 6px; z-index: 999; box-shadow: 0 10px 30px rgba(12,27,51,0.12); }
+.mobile-nav-item { border-right: none !important; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--text-sub); font-family: var(--font-sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.03em; line-height: 1.4; }
+.mobile-nav-item.line { color: #05a34a; }
+.mobile-nav-item.highlight { flex: 1.2; background: linear-gradient(135deg, #0c1b33, #193156) !important; color: #cfab5a !important; border-radius: 15px; box-shadow: 0 4px 15px rgba(12,27,51,0.25); }
+@media (min-width: 768px) { .mobile-nav { display: none !important; } }
 </style>
 </head>
 <body>
-    <div id="header"><div class="header-inner"><div class="logo"><h2><a href="./index.html">株式会社ｃｉｒｃｌｅ</a></h2></div></div></div>
-    <div class="nav-pc"><ul><li><a href="./index.html">ホーム</a></li><li><a href="./profile.html">会社概要</a></li><li><a href="https://www.instagram.com/circle.inc0310?stkn=MTJzaXRobGRydm56&utm_source=qr" target="_blank" rel="noopener">施工事例</a></li><li><a href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener">LINEで相談</a></li></ul></div>
+    <div id="header"><div class="header-inner"><div class="logo"><a href="./index.html"><img src="images/circle%20-logo_01.png" alt="株式会社circle"></a></div></div></div>
+    <div class="nav-pc"><ul><li><a href="./index.html">ホーム</a></li><li><a href="./profile.html">会社概要</a></li><li><a href="https://www.instagram.com/circle.inc0310" target="_blank" rel="noopener">施工事例</a></li><li><a href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener">LINEで相談</a></li></ul></div>
     
     <div class="container">
         <h1>一つひとつのステップを、<br>誠実さと透明性とともに</h1>
-        <img class="main-img" src="../../../photo/content_menu/403_con_top_photo.jpg" alt="外壁流れ">
+        <img class="main-img" src="images/gaiheki1.png" alt="外壁塗装工事の流れ" onerror="this.style.display='none'">
         <p>
             私たちの工事は、ただ壁を綺麗にする時間ではありません。お施主様はもちろんのこと、これまで皆様が地域で築いてこられた「ご近所様との良好な関係」もそのまま守るための、大切な丁寧さが求められます。
         </p>
@@ -35,13 +64,22 @@
 
         <div class="point-box">
             <h3>2. 想いを重ねる「3つの工程」</h3>
-            <p style="margin-bottom:0;">実際の塗装には「下塗り」「中塗り」「上塗り」という3つの工程があります。見えなくなってしまう最初の下地から一切手力を抜かず、3回しっかりと想いを重ねて塗り上げることで、10年先も剥がれない強さが生まれます。</p>
+            <p style="margin-bottom:0;">実際の塗装には「下塗り」「中塗り」「上塗り」という3つの工程があります。見えなくなってしまう最初の下地から一切手を抜かず、3回しっかりと想いを重ねて塗り上げることで、10年先を見据えた確かな強さが生まれます。</p>
         </div>
+        <div class="cta-box">
+            <p class="cta-lead">お家のこと、まずは気軽にご相談ください</p>
+            <div class="cta-buttons">
+                <a class="cta-btn line" href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener">LINEで相談する</a>
+                <a class="cta-btn insta" href="https://www.instagram.com/circle.inc0310" target="_blank" rel="noopener">施工事例を見る（Instagram）</a>
+                <a class="cta-btn tel" href="tel:09034081379">電話する 090-3408-1379</a>
+            </div>
+        </div>
+
 
         <a href="./index.html" class="btn-back">← ホームへ戻る</a>
     </div>
 
-    <div id="footer"><div class="footer-links"><a href="./index.html">ホーム</a><a href="./profile.html">会社概要</a><a href="https://www.instagram.com/circle.inc0310?stkn=MTJzaXRobGRydm56&utm_source=qr" target="_blank" rel="noopener">施工事例</a><a href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener">LINE</a></div>Copyright (C) kensetumap.com All Rights Reserved.</div>
-    <div class="mobile-nav"><a href="./index.html" class="mobile-nav-item">ホーム</a><a href="./profile.html" class="mobile-nav-item">会社概要</a><a href="https://www.instagram.com/circle.inc0310?stkn=MTJzaXRobGRydm56&utm_source=qr" target="_blank" rel="noopener" class="mobile-nav-item">施工事例</a><a href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener" class="mobile-nav-item line">LINE</a><a href="tel:09034081379" class="mobile-nav-item highlight">相談してみる</a></div>
+    <div id="footer">Copyright &copy; 株式会社ｃｉｒｃｌｅ All Rights Reserved.</div>
+    <div class="mobile-nav"><a href="./index.html" class="mobile-nav-item">ホーム</a><a href="https://www.instagram.com/circle.inc0310" target="_blank" rel="noopener" class="mobile-nav-item">施工事例</a><a href="https://lin.ee/Z6BT9SU" target="_blank" rel="noopener" class="mobile-nav-item line">LINE相談</a><a href="tel:09034081379" class="mobile-nav-item highlight">電話する</a></div>
 </body>
 </html>
